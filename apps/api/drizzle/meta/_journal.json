@@ -29,6 +29,13 @@
       "when": 1789986426297,
       "tag": "0003_yielding_silver_samurai",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1790000861509,
+      "tag": "0004_even_mongoose",
+      "breakpoints": true
     }
   ]
 }

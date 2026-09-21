@@ -26,7 +26,7 @@ export const listOrderItems = (db: Db, tenantId: string, orderIds: string[]) =>
     .from(orderItems)
     .where(and(eq(orderItems.tenantId, tenantId), inArray(orderItems.orderId, orderIds)));
 
-type NewOrder = Pick<OrderRow, 'id' | 'tenantId' | 'cashierId' | 'total' | 'paid' | 'paymentMethod'>;
+type NewOrder = Pick<OrderRow, 'id' | 'tenantId' | 'cashierId' | 'shiftId' | 'total' | 'paid' | 'paymentMethod'>;
 
 // Unexecuted, for db.batch. Number = today's max + 1; two concurrent inserts collide on the unique constraint.
 export function insertOrder(db: Db, values: NewOrder) {

@@ -14,6 +14,9 @@ const MESSAGES: Record<string, string> = {
   insufficient_payment: 'Uang yang dibayar kurang.',
   order_not_found: 'Transaksi tidak ditemukan.',
   order_already_void: 'Transaksi sudah di-void.',
+  shift_not_open: 'Belum ada shift yang dibuka. Buka shift dulu.',
+  shift_already_open: 'Shift Anda masih terbuka.',
+  shift_not_found: 'Shift tidak ditemukan.',
   too_many_attempts: 'Terlalu banyak percobaan. Coba lagi dalam 1 menit.',
 };
 

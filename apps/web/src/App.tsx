@@ -7,6 +7,7 @@ import { HomePage } from './pages/HomePage';
 import { LoginPage } from './pages/LoginPage';
 import { OrdersPage } from './pages/OrdersPage';
 import { PosPage } from './pages/PosPage';
+import { ShiftPage } from './pages/ShiftPage';
 import { UsersPage } from './pages/UsersPage';
 
 export function App() {
@@ -27,6 +28,7 @@ export function App() {
         <Route path="/" element={<HomePage me={me} onLogout={() => logout().then(() => setMe(null))} />} />
         <Route path="/jual" element={<PosPage me={me} />} />
         <Route path="/riwayat" element={<OrdersPage me={me} />} />
+        <Route path="/shift" element={<ShiftPage me={me} />} />
         {me.role === 'owner' && <Route path="/kasir" element={<UsersPage />} />}
         {me.role === 'owner' && <Route path="/katalog" element={<CatalogPage />} />}
         <Route path="*" element={<Navigate to="/" replace />} />

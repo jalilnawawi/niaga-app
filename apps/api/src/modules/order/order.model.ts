@@ -1,6 +1,7 @@
 import { sql } from 'drizzle-orm';
 import { bigint, check, date, foreignKey, index, integer, pgEnum, pgTable, text, timestamp, unique, uuid } from 'drizzle-orm/pg-core';
 import { products } from '../catalog/catalog.model';
+import { shifts } from '../shift/shift.model';
 import { tenants } from '../tenant/tenant.model';
 import { users } from '../user/user.model';
 
@@ -23,6 +24,8 @@ export const orders = pgTable(
     cashierId: uuid()
       .notNull()
       .references(() => users.id),
+    // The cashier's open shift at sale time; its cash sales make up the drawer's expected cash.
+    shiftId: uuid().notNull(),
     // Rupiah. bigint: 100 items × 999 qty × max price overflows int4.
     total: bigint({ mode: 'number' }).notNull(),
     // Rupiah handed over; change = paid - total.
@@ -38,6 +41,8 @@ export const orders = pgTable(
     unique().on(t.tenantId, t.businessDate, t.number),
     // (id, tenantId) is the target of order_items' composite FK.
     unique().on(t.id, t.tenantId),
+    index().on(t.tenantId, t.shiftId),
+    foreignKey({ columns: [t.shiftId, t.tenantId], foreignColumns: [shifts.id, shifts.tenantId] }),
     check('orders_total_nonnegative', sql`${t.total} >= 0`),
     check('orders_paid_covers_total', sql`${t.paid} >= ${t.total}`),
     check('orders_qris_exact', sql`${t.paymentMethod} <> 'qris' or ${t.paid} = ${t.total}`),

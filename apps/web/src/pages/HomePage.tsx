@@ -11,7 +11,7 @@ export function HomePage({ me, onLogout }: Props) {
         {me.name} ({me.role}) · {me.tenant.name}
       </p>
       <nav>
-        <Link to="/jual">Kasir</Link> · <Link to="/riwayat">Riwayat hari ini</Link>
+        <Link to="/jual">Kasir</Link> · <Link to="/shift">Shift</Link> · <Link to="/riwayat">Riwayat hari ini</Link>
         {me.role === 'owner' && (
           <>
             {' '}

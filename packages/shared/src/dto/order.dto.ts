@@ -1,10 +1,11 @@
 import { z } from 'zod';
+import { rupiahSchema } from './common.dto';
 
 const cartItemSchema = z.object({ productId: z.uuid(), qty: z.number().int().min(1).max(999) });
 
 const paymentSchema = z.discriminatedUnion('method', [
   // Rupiah handed over by the customer.
-  z.object({ method: z.literal('cash'), paid: z.number().int().min(0).max(1_000_000_000_000) }),
+  z.object({ method: z.literal('cash'), paid: rupiahSchema }),
   // Static QRIS: the cashier checks the customer's banking app and confirms; paid equals total.
   z.object({ method: z.literal('qris') }),
 ]);

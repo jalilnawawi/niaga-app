@@ -5,6 +5,7 @@ import { createOrderSchema } from '@niaga/shared';
 import { listProducts } from '../api/catalog.api';
 import { errorMessage } from '../api/error-message';
 import { createOrder } from '../api/order.api';
+import { getCurrentShift } from '../api/shift.api';
 import { Cart } from '../components/order/Cart';
 import { PaymentForm } from '../components/order/PaymentForm';
 import { ProductGrid } from '../components/order/ProductGrid';
@@ -18,9 +19,13 @@ export function PosPage({ me }: Props) {
   const [products, setProducts] = useState<Product[] | null>(null);
   const [cart, setCart] = useState<CartLine[]>([]);
   const [receipt, setReceipt] = useState<Order | null>(null);
+  const [hasShift, setHasShift] = useState<boolean | null>(null);
   const { error, setError, run } = useAction();
 
   useEffect(() => {
+    getCurrentShift()
+      .then((shift) => setHasShift(shift !== null))
+      .catch((e: unknown) => setError(errorMessage(e)));
     listProducts()
       .then((all) => setProducts(all.filter((p) => p.active)))
       .catch((e: unknown) => setError(errorMessage(e)));
@@ -48,10 +53,15 @@ export function PosPage({ me }: Props) {
   return (
     <main>
       <p>
-        <Link to="/">← Beranda</Link> · <Link to="/riwayat">Riwayat hari ini</Link>
+        <Link to="/">← Beranda</Link> · <Link to="/shift">Shift</Link> · <Link to="/riwayat">Riwayat hari ini</Link>
       </p>
       <h1>Kasir</h1>
       {error && <p role="alert">{error}</p>}
+      {hasShift === false && (
+        <p role="alert">
+          Belum ada shift yang dibuka. <Link to="/shift">Buka shift</Link> sebelum berjualan.
+        </p>
+      )}
       {products === null && !error && <p>Loading…</p>}
       {products && <ProductGrid products={products} onAdd={add} />}
       <section aria-labelledby="cart-heading">

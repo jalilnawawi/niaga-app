@@ -2,6 +2,7 @@ import type { CreateOrder, Order, VoidOrder } from '@niaga/shared';
 import type { Db } from '../../db/client';
 import { AppError } from '../../lib/errors';
 import * as catalogService from '../catalog/catalog.service';
+import * as shiftService from '../shift/shift.service';
 import type { OrderItemRow } from './order.model';
 import * as repo from './order.repository';
 
@@ -41,6 +42,7 @@ const isUniqueViolation = (e: unknown) => {
 };
 
 export async function createOrder(db: Db, tenantId: string, cashierId: string, input: CreateOrder) {
+  const shiftId = await shiftService.requireOpenShiftId(db, tenantId, cashierId);
   const products = await catalogService.getActiveProducts(db, tenantId, input.items.map((i) => i.productId));
   const byId = new Map(products.map((p) => [p.id, p]));
   const lines = input.items.map(({ productId, qty }) => {
@@ -54,7 +56,7 @@ export async function createOrder(db: Db, tenantId: string, cashierId: string, i
   if (paid < total) throw new AppError(400, 'insufficient_payment');
 
   const id = crypto.randomUUID();
-  const order = { id, tenantId, cashierId, total, paid, paymentMethod: input.payment.method };
+  const order = { id, tenantId, cashierId, shiftId, total, paid, paymentMethod: input.payment.method };
   const items = lines.map((l) => ({ ...l, tenantId, orderId: id }));
   // Two cashiers checking out at once can take the same receipt number; the loser retries with the next one.
   for (let attempt = 1; ; attempt++) {

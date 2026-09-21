@@ -13,16 +13,21 @@ describe.skipIf(!DATABASE_URL)('orders', () => {
     }, env);
   const sid = (res: Response) => res.headers.get('Set-Cookie')!.split(';')[0]!;
   const email = (who: string) => `${who}-${crypto.randomUUID()}@test.local`;
+  // Selling needs an open shift, so every session here opens one.
+  const withShift = async (cookie: string) => (await call('POST', '/shifts', { openingCash: 0 }, cookie), cookie);
   const signup = async (who: string) =>
-    sid(await call('POST', '/auth/signup', { email: email(who), password: 'password1', name: who, tenantName: who }));
+    withShift(sid(await call('POST', '/auth/signup', { email: email(who), password: 'password1', name: who, tenantName: who })));
+  const loginCashier = async (owner: string) => {
+    const cashierEmail = email('cashier');
+    await call('POST', '/users', { email: cashierEmail, password: 'password1', name: 'Sari' }, owner);
+    return withShift(sid(await call('POST', '/auth/login', { email: cashierEmail, password: 'password1' })));
+  };
   const product = async (owner: string, name: string, price: number) =>
     ((await (await call('POST', '/catalog/products', { name, price, categoryId: null }, owner)).json()) as { id: string }).id;
 
   test('cashier sells with cash and QRIS; receipt keeps sale-time price', async () => {
     const owner = await signup('owner');
-    const cashierEmail = email('cashier');
-    await call('POST', '/users', { email: cashierEmail, password: 'password1', name: 'Sari' }, owner);
-    const cashier = sid(await call('POST', '/auth/login', { email: cashierEmail, password: 'password1' }));
+    const cashier = await loginCashier(owner);
     const teh = await product(owner, 'Es teh', 5000);
     const nasi = await product(owner, 'Nasi goreng', 15000);
 
@@ -61,9 +66,7 @@ describe.skipIf(!DATABASE_URL)('orders', () => {
   test('only the owner voids, with a reason, once; tenants are isolated', async () => {
     const owner = await signup('owner');
     const other = await signup('other');
-    const cashierEmail = email('cashier');
-    await call('POST', '/users', { email: cashierEmail, password: 'password1', name: 'Sari' }, owner);
-    const cashier = sid(await call('POST', '/auth/login', { email: cashierEmail, password: 'password1' }));
+    const cashier = await loginCashier(owner);
     const teh = await product(owner, 'Es teh', 5000);
     const body = { items: [{ productId: teh, qty: 1 }], payment: { method: 'qris' } };
     const order = (await (await call('POST', '/orders', body, cashier)).json()) as { id: string };
