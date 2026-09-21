@@ -1,0 +1,4 @@
+# Local Postgres via docker compose + local-neon-http-proxy
+DATABASE_URL=postgres://postgres:postgres@db.localtest.me:5432/niaga
+# Or Neon dev database:
+# DATABASE_URL=postgresql://USER:PASSWORD@HOST/niaga_dev_db?sslmode=require

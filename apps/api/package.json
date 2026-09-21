@@ -1,0 +1,32 @@
+{
+  "name": "@niaga/api",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260921.1",
+    "drizzle-kit": "^0.31.10",
+    "postgres": "^3.4.9",
+    "wrangler": "^4.135.0"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.9.1",
+    "@neondatabase/serverless": "^1.1.0",
+    "@niaga/shared": "workspace:*",
+    "drizzle-orm": "^0.45.2",
+    "hono": "^4.13.8",
+    "zod": "^4.6.5"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "niaga",
+  "private": true,
+  "type": "module",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "bun run --filter '*' dev",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "lint": "eslint .",
+    "typecheck": "bun run --filter '*' typecheck",
+    "test": "bun test",
+    "check:web-bundle": "bun scripts/check-web-bundle.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/bun": "^1.4.2",
+    "eslint": "^10.11.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.12.0",
+    "typescript": "~6.0",
+    "typescript-eslint": "^8.70.0"
+  }
+}
