@@ -1,15 +1,9 @@
 import { useState } from 'react';
 import { loginSchema, signupSchema } from '@niaga/shared';
 import { login, signup } from '../api/auth.api';
-import { ApiError } from '../api/client';
+import { errorMessage } from '../api/error-message';
 import { AuthForm } from '../components/auth/AuthForm';
 import type { AuthMode } from '../components/auth/AuthForm';
-
-const MESSAGES: Record<string, string> = {
-  email_taken: 'Email sudah terdaftar.',
-  invalid_credentials: 'Email atau password salah.',
-  invalid_input: 'Data yang diisi tidak valid.',
-};
 
 type Props = { onLoggedIn: () => void };
 
@@ -24,10 +18,7 @@ export function LoginPage({ onLoggedIn }: Props) {
       else await signup(signupSchema.parse(values));
       onLoggedIn();
     } catch (e) {
-      if (e instanceof ApiError) setError(MESSAGES[e.code] ?? e.code);
-      // zod's parse throws ZodError; web has no direct zod import to instanceof against.
-      else if (e instanceof Error && e.name === 'ZodError') setError((e as unknown as { issues: { message: string }[] }).issues[0]!.message);
-      else setError(String(e));
+      setError(errorMessage(e));
     }
   }
 
