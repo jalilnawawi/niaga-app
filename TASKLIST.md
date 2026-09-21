@@ -30,9 +30,9 @@ Urutan fase = urutan kerja. Tiap fitur mengikuti [CONVENTIONS.md](CONVENTIONS.md
 
 ## 2. Katalog
 
-- [x] Kategori produk (CRUD, per tenant)
-- [x] Produk: nama, harga integer rupiah, kategori, aktif/nonaktif (CRUD, per tenant)
-- [x] Halaman katalog untuk owner (`/katalog`)
+- [x] Kategori produk (CRUD, per tenant) — `f5a6520`
+- [x] Produk: nama, harga integer rupiah, kategori, aktif/nonaktif (CRUD, per tenant) — `f5a6520`
+- [x] Halaman katalog untuk owner (`/katalog`) — `f5a6520`
 
 ## 3. Transaksi (inti POS)
 
