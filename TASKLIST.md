@@ -52,9 +52,9 @@ Urutan fase = urutan kerja. Tiap fitur mengikuti [CONVENTIONS.md](CONVENTIONS.md
 
 ## 5. Laporan
 
-- [ ] Penjualan per hari / rentang tanggal (zona waktu Asia/Jakarta)
-- [ ] Penjualan per produk dan per kasir
-- [ ] Export CSV
+- [x] Penjualan per hari / rentang tanggal (zona waktu Asia/Jakarta) — `ceb5a04`
+- [x] Penjualan per produk dan per kasir — `ceb5a04`
+- [x] Export CSV — `ceb5a04`
 
 ## 6. Persiapan deploy
 
