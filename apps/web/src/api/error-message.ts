@@ -7,6 +7,7 @@ const MESSAGES: Record<string, string> = {
   user_inactive: 'Akun ini dinonaktifkan. Hubungi owner.',
   user_not_found: 'User tidak ditemukan.',
   forbidden: 'Anda tidak punya akses.',
+  too_many_attempts: 'Terlalu banyak percobaan. Coba lagi dalam 1 menit.',
 };
 
 // Turns an ApiError code or a failed shared-schema parse into text for the user.

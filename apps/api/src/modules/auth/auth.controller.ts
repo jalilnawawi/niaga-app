@@ -2,15 +2,15 @@ import { Hono } from 'hono';
 import { loginSchema, signupSchema } from '@niaga/shared';
 import type { Env } from '../../env';
 import { validate } from '../../lib/validate';
-import { clearSessionCookie, getSessionToken, requireAuth, setSessionCookie } from './auth.middleware';
+import { authRateLimit, clearSessionCookie, getSessionToken, requireAuth, setSessionCookie } from './auth.middleware';
 import * as authService from './auth.service';
 
 export const authController = new Hono<Env>()
-  .post('/signup', validate('json', signupSchema), async (c) => {
+  .post('/signup', validate('json', signupSchema), authRateLimit, async (c) => {
     setSessionCookie(c, await authService.signup(c.var.db, c.req.valid('json')));
     return c.json({ ok: true as const }, 201);
   })
-  .post('/login', validate('json', loginSchema), async (c) => {
+  .post('/login', validate('json', loginSchema), authRateLimit, async (c) => {
     setSessionCookie(c, await authService.login(c.var.db, c.req.valid('json')));
     return c.json({ ok: true as const });
   })

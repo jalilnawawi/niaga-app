@@ -52,7 +52,8 @@ export async function login(db: Db, input: Login): Promise<Session> {
   }
   if (!user.active) throw new AppError(403, 'user_inactive');
   const { session, insert } = await newSession(db, user.id);
-  await insert;
+  // ponytail: expired sessions are pruned per user at login; add a cron sweep if users who never return pile up.
+  await db.batch([insert, repo.deleteExpiredSessions(db, user.id)]);
   return session;
 }
 
@@ -65,7 +66,7 @@ export async function revokeSessions(db: Db, userId: string) {
   await repo.deleteUserSessions(db, userId);
 }
 
-// ponytail: fixed 30-day expiry, no sliding renewal and no expired-row cleanup; add a cron when the table grows.
+// ponytail: fixed 30-day expiry, no sliding renewal; add renewal if cashiers get logged out mid-shift.
 export async function getMe(db: Db, token: string): Promise<Me | undefined> {
   const row = await repo.findSessionUser(db, await sessionId(token));
   if (!row) return undefined;

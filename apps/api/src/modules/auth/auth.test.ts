@@ -8,10 +8,27 @@ test('password hash round-trips', async () => {
   expect(await verifyPassword('wrong horse', hash)).toBe(false);
 });
 
+test('rate limits login per IP and normalised email', async () => {
+  const keys: string[] = [];
+  const env = {
+    DATABASE_URL: 'postgres://u:p@localhost/db', // Never queried: the limiter rejects first.
+    WEB_ORIGIN: 'http://localhost:5173',
+    AUTH_LIMITER: { limit: async ({ key }: { key: string }) => (keys.push(key), { success: false }) },
+  };
+  const res = await app.request('/auth/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Origin: env.WEB_ORIGIN, 'CF-Connecting-IP': '1.2.3.4' },
+    body: JSON.stringify({ email: ' Budi@Test.Local ', password: 'password1' }),
+  }, env);
+  expect(res.status).toBe(429);
+  expect(await res.json()).toMatchObject({ error: 'too_many_attempts' });
+  expect(keys).toEqual(['ip:1.2.3.4', 'email:budi@test.local']);
+});
+
 // Needs the docker compose DB with migrations applied: DATABASE_URL=... bun test
 const DATABASE_URL = process.env.DATABASE_URL;
 describe.skipIf(!DATABASE_URL)('auth flow', () => {
-  const env = { DATABASE_URL: DATABASE_URL!, WEB_ORIGIN: 'http://localhost:5173' };
+  const env = { DATABASE_URL: DATABASE_URL!, WEB_ORIGIN: 'http://localhost:5173', AUTH_LIMITER: { limit: async () => ({ success: true }) } };
   const email = `owner-${crypto.randomUUID()}@test.local`;
   const post = (path: string, body: unknown, cookie = '') =>
     app.request(path, {

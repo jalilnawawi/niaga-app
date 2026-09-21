@@ -4,7 +4,7 @@ import app from '../../index';
 // Needs the docker compose DB with migrations applied: DATABASE_URL=... bun test
 const DATABASE_URL = process.env.DATABASE_URL;
 describe.skipIf(!DATABASE_URL)('cashier management', () => {
-  const env = { DATABASE_URL: DATABASE_URL!, WEB_ORIGIN: 'http://localhost:5173' };
+  const env = { DATABASE_URL: DATABASE_URL!, WEB_ORIGIN: 'http://localhost:5173', AUTH_LIMITER: { limit: async () => ({ success: true }) } };
   const call = (method: string, path: string, body?: unknown, cookie = '') =>
     app.request(path, {
       method,

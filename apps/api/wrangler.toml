@@ -5,6 +5,12 @@ compatibility_date = "2026-09-01"
 [vars]
 WEB_ORIGIN = "http://localhost:5173"
 
+# Login/signup attempts per key (IP and email). Counted per Cloudflare location, not globally exact.
+[[ratelimits]]
+name = "AUTH_LIMITER"
+namespace_id = "1001"
+simple = { limit = 10, period = 60 }
+
 # Secrets (never commit): set with `wrangler secret put DATABASE_URL`.
 # Local dev reads them from .dev.vars.
 

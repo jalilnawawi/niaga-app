@@ -23,10 +23,10 @@ Urutan fase = urutan kerja. Tiap fitur mengikuti [CONVENTIONS.md](CONVENTIONS.md
 - [x] Web: pasang router (hapus `ponytail:` di `App.tsx`) begitu ada halaman login kedua
 - [x] Owner mengelola kasir: tambah, nonaktifkan, reset password (pindahkan `users` ke modul `user`)
   - [x] API `/users`: list, tambah kasir, `PATCH` aktif/password (cabut semua session) — `f5e075e`
-  - [x] Halaman kelola kasir di web (`/kasir`)
+  - [x] Halaman kelola kasir di web (`/kasir`) — `d060ad3`
 - [x] Middleware role (`requireRole('owner')`) untuk route khusus owner
-- [ ] Batasi percobaan login (rate limit per email/IP)
-- [ ] Hapus session kedaluwarsa (cron trigger Worker atau hapus saat lookup)
+- [x] Batasi percobaan login (rate limit per email/IP)
+- [x] Hapus session kedaluwarsa (dihapus per user saat login)
 
 ## 2. Katalog
 

@@ -33,3 +33,14 @@ export const requireRole = (role: Me['role']) =>
     if (c.var.user.role !== role) return c.json({ error: 'forbidden' }, 403);
     await next();
   });
+
+type EmailInput = { in: { json: { email: string } }; out: { json: { email: string } } };
+
+// Use after validate('json', ...): caps password guessing per IP and per targeted (normalised) email.
+export const authRateLimit = createMiddleware<Env, string, EmailInput>(async (c, next) => {
+  const { email } = c.req.valid('json');
+  const ip = c.req.header('cf-connecting-ip') ?? 'unknown';
+  const results = await Promise.all([`ip:${ip}`, `email:${email}`].map((key) => c.env.AUTH_LIMITER.limit({ key })));
+  if (results.some((r) => !r.success)) return c.json({ error: 'too_many_attempts' }, 429);
+  await next();
+});

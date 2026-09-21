@@ -1,4 +1,4 @@
-import { and, eq, gt } from 'drizzle-orm';
+import { and, eq, gt, lte } from 'drizzle-orm';
 import type { Db } from '../../db/client';
 import { tenants } from '../tenant/tenant.model';
 import { users } from '../user/user.model';
@@ -34,3 +34,6 @@ export async function deleteSession(db: Db, sessionId: string) {
 export async function deleteUserSessions(db: Db, userId: string) {
   await db.delete(sessions).where(eq(sessions.userId, userId));
 }
+
+export const deleteExpiredSessions = (db: Db, userId: string) =>
+  db.delete(sessions).where(and(eq(sessions.userId, userId), lte(sessions.expiresAt, new Date())));
