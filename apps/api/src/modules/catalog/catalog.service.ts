@@ -26,6 +26,10 @@ export async function deleteCategory(db: Db, tenantId: string, id: string) {
 
 export const listProducts = async (db: Db, tenantId: string) => (await repo.listProducts(db, tenantId)).map(toProduct);
 
+// For selling: inactive and other tenants' products are left out.
+export const getActiveProducts = async (db: Db, tenantId: string, ids: string[]) =>
+  (await repo.findActiveProducts(db, tenantId, ids)).map(toProduct);
+
 // The composite FK already blocks other tenants' categories; this turns that into a clean 400 instead of a 500.
 async function assertCategory(db: Db, tenantId: string, categoryId: string | null | undefined) {
   if (categoryId && !(await repo.findCategoryById(db, tenantId, categoryId))) throw new AppError(400, 'category_not_found');

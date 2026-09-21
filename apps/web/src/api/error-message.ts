@@ -10,6 +10,10 @@ const MESSAGES: Record<string, string> = {
   category_not_found: 'Kategori tidak ditemukan.',
   category_in_use: 'Kategori masih dipakai produk. Pindahkan produknya dulu.',
   product_not_found: 'Produk tidak ditemukan.',
+  product_unavailable: 'Ada produk yang sudah nonaktif. Muat ulang halaman.',
+  insufficient_payment: 'Uang yang dibayar kurang.',
+  order_not_found: 'Transaksi tidak ditemukan.',
+  order_already_void: 'Transaksi sudah di-void.',
   too_many_attempts: 'Terlalu banyak percobaan. Coba lagi dalam 1 menit.',
 };
 

@@ -15,7 +15,8 @@ export class ApiError extends Error {
   }
 }
 
-type Ok<R> = R extends { ok: true; json(): Promise<infer T> } ? T : never;
+// Routes that call c.json without a status get `ok: boolean`, so exclude `ok: false` instead of requiring `ok: true`.
+type Ok<R> = R extends { ok: false } ? never : R extends { json(): Promise<infer T> } ? T : never;
 
 // Returns the success body, typed from AppType; throws ApiError otherwise.
 export async function unwrap<R extends { ok: boolean; status: number; json(): Promise<unknown> }>(res: R): Promise<Ok<R>> {

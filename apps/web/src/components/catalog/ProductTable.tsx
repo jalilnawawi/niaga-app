@@ -1,4 +1,5 @@
 import type { Category, Product } from '@niaga/shared';
+import { rupiah } from '../ui/rupiah';
 
 type Props = {
   products: Product[];
@@ -6,8 +7,6 @@ type Props = {
   onEdit: (product: Product) => void;
   onToggleActive: (product: Product) => void;
 };
-
-const rupiah = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 });
 
 export function ProductTable({ products, categories, onEdit, onToggleActive }: Props) {
   const categoryName = (id: string | null) => categories.find((c) => c.id === id)?.name ?? '—';

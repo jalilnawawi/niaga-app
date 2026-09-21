@@ -1,4 +1,4 @@
-import { and, asc, eq, notExists } from 'drizzle-orm';
+import { and, asc, eq, inArray, notExists } from 'drizzle-orm';
 import type { Db } from '../../db/client';
 import type { CategoryRow, ProductRow } from './catalog.model';
 import { categories, products } from './catalog.model';
@@ -42,6 +42,12 @@ export async function deleteUnusedCategory(db: Db, tenantId: string, id: string)
 
 export const listProducts = (db: Db, tenantId: string) =>
   db.select().from(products).where(eq(products.tenantId, tenantId)).orderBy(asc(products.name));
+
+export const findActiveProducts = (db: Db, tenantId: string, ids: string[]) =>
+  db
+    .select()
+    .from(products)
+    .where(and(eq(products.tenantId, tenantId), eq(products.active, true), inArray(products.id, ids)));
 
 export async function insertProduct(db: Db, values: typeof products.$inferInsert) {
   const [product] = await db.insert(products).values(values).returning();

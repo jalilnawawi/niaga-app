@@ -5,6 +5,8 @@ import { getMe, logout } from './api/auth.api';
 import { CatalogPage } from './pages/CatalogPage';
 import { HomePage } from './pages/HomePage';
 import { LoginPage } from './pages/LoginPage';
+import { OrdersPage } from './pages/OrdersPage';
+import { PosPage } from './pages/PosPage';
 import { UsersPage } from './pages/UsersPage';
 
 export function App() {
@@ -23,6 +25,8 @@ export function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage me={me} onLogout={() => logout().then(() => setMe(null))} />} />
+        <Route path="/jual" element={<PosPage me={me} />} />
+        <Route path="/riwayat" element={<OrdersPage me={me} />} />
         {me.role === 'owner' && <Route path="/kasir" element={<UsersPage />} />}
         {me.role === 'owner' && <Route path="/katalog" element={<CatalogPage />} />}
         <Route path="*" element={<Navigate to="/" replace />} />
