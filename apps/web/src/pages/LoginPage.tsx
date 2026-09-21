@@ -8,6 +8,7 @@ import type { AuthMode } from '../components/auth/AuthForm';
 const MESSAGES: Record<string, string> = {
   email_taken: 'Email sudah terdaftar.',
   invalid_credentials: 'Email atau password salah.',
+  invalid_input: 'Data yang diisi tidak valid.',
 };
 
 type Props = { onLoggedIn: () => void };

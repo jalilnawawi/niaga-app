@@ -26,6 +26,7 @@ apps/api/src/
     schema.ts                  # barrel: re-exports every *.model.ts (drizzle-kit + client read this)
   lib/
     errors.ts                  # AppError
+    validate.ts                # zValidator wrapper: 400 { error: 'invalid_input' }
   modules/
     product/
       product.model.ts
@@ -75,7 +76,7 @@ packages/shared/src/
 
 - A Hono router: `export const productController = new Hono<Env>().get(...).post(...)`.
 - **Keep the chain.** Routes must be chained and mounted with `.route()` in `index.ts`, or the web loses `AppType` inference.
-- Per route: auth middleware, `zValidator` with the DTO schema, one service call, `c.json(result, status)`. Nothing else.
+- Per route: auth middleware, `validate(target, schema)` from `lib/validate.ts` (never raw `zValidator`), one service call, `c.json(result, status)`. Nothing else.
 - Reads `tenantId` from the session (`c.var.user.tenant.id`), never from the request body or params.
 - No `drizzle-orm` imports.
 - HTTP-only concerns (cookies, headers) stay here or in `<module>.middleware.ts`; the service returns plain data such as a session token.
@@ -93,7 +94,7 @@ A layer imports only layers to its right. Modules call each other through servic
 ### Errors
 
 - One `app.onError` in `index.ts` turns `AppError` into `{ error: code }` with its status, and anything else into a logged `500 { error: 'internal' }`. Stack traces never reach the client.
-- `zValidator` failures return `400`.
+- Validation failures return `400 { error: 'invalid_input' }` through `validate()`.
 
 ## Frontend (`apps/web`)
 

@@ -1,8 +1,8 @@
 import { Hono } from 'hono';
-import { zValidator } from '@hono/zod-validator';
 import { loginSchema, signupSchema } from '@niaga/shared';
 import { createDb } from '../../db/client';
 import type { Env } from '../../env';
+import { validate } from '../../lib/validate';
 import { clearSessionCookie, getSessionToken, requireAuth, setSessionCookie } from './auth.middleware';
 import * as authService from './auth.service';
 
@@ -11,11 +11,11 @@ export const authController = new Hono<Env>()
     c.set('db', createDb(c.env.DATABASE_URL));
     await next();
   })
-  .post('/signup', zValidator('json', signupSchema), async (c) => {
+  .post('/signup', validate('json', signupSchema), async (c) => {
     setSessionCookie(c, await authService.signup(c.var.db, c.req.valid('json')));
     return c.json({ ok: true as const }, 201);
   })
-  .post('/login', zValidator('json', loginSchema), async (c) => {
+  .post('/login', validate('json', loginSchema), async (c) => {
     setSessionCookie(c, await authService.login(c.var.db, c.req.valid('json')));
     return c.json({ ok: true as const });
   })

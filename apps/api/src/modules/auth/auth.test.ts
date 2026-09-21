@@ -33,6 +33,10 @@ describe.skipIf(!DATABASE_URL)('auth flow', () => {
     await post('/auth/logout', {}, sid(signup));
     expect((await app.request('/auth/me', { headers: { Cookie: sid(signup) } }, env)).status).toBe(401);
 
+    const invalid = await post('/auth/login', { email: 'not-an-email' });
+    expect(invalid.status).toBe(400);
+    expect(await invalid.json()).toMatchObject({ error: 'invalid_input' });
+
     expect((await post('/auth/login', { email, password: 'wrongpass' })).status).toBe(401);
     const login = await post('/auth/login', { email, password: 'password1' });
     expect((await app.request('/auth/me', { headers: { Cookie: sid(login) } }, env)).status).toBe(200);
