@@ -10,6 +10,7 @@ import { AppError } from './lib/errors';
 import { authController } from './modules/auth/auth.controller';
 import { catalogController } from './modules/catalog/catalog.controller';
 import { orderController } from './modules/order/order.controller';
+import { reportController } from './modules/report/report.controller';
 import { shiftController } from './modules/shift/shift.controller';
 import { userController } from './modules/user/user.controller';
 
@@ -34,7 +35,8 @@ const app = new Hono<Env>()
   .route('/users', userController)
   .route('/catalog', catalogController)
   .route('/orders', orderController)
-  .route('/shifts', shiftController);
+  .route('/shifts', shiftController)
+  .route('/reports', reportController);
 
 app.onError((err, c) => {
   if (err instanceof AppError) return c.json({ error: err.code }, err.status);

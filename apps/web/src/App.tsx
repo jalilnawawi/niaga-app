@@ -7,6 +7,7 @@ import { HomePage } from './pages/HomePage';
 import { LoginPage } from './pages/LoginPage';
 import { OrdersPage } from './pages/OrdersPage';
 import { PosPage } from './pages/PosPage';
+import { ReportPage } from './pages/ReportPage';
 import { ShiftPage } from './pages/ShiftPage';
 import { UsersPage } from './pages/UsersPage';
 
@@ -31,6 +32,7 @@ export function App() {
         <Route path="/shift" element={<ShiftPage me={me} />} />
         {me.role === 'owner' && <Route path="/kasir" element={<UsersPage />} />}
         {me.role === 'owner' && <Route path="/katalog" element={<CatalogPage />} />}
+        {me.role === 'owner' && <Route path="/laporan" element={<ReportPage />} />}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
