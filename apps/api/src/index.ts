@@ -8,6 +8,7 @@ import { createDb } from './db/client';
 import type { Env } from './env';
 import { AppError } from './lib/errors';
 import { authController } from './modules/auth/auth.controller';
+import { catalogController } from './modules/catalog/catalog.controller';
 import { userController } from './modules/user/user.controller';
 
 const app = new Hono<Env>()
@@ -28,7 +29,8 @@ const app = new Hono<Env>()
     return c.json({ status: 'ok' as const });
   })
   .route('/auth', authController)
-  .route('/users', userController);
+  .route('/users', userController)
+  .route('/catalog', catalogController);
 
 app.onError((err, c) => {
   if (err instanceof AppError) return c.json({ error: err.code }, err.status);

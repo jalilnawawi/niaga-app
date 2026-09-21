@@ -12,7 +12,7 @@ export function HomePage({ me, onLogout }: Props) {
       </p>
       {me.role === 'owner' && (
         <nav>
-          <Link to="/kasir">Kelola kasir</Link>
+          <Link to="/katalog">Katalog</Link> · <Link to="/kasir">Kelola kasir</Link>
         </nav>
       )}
       <button onClick={onLogout}>Logout</button>

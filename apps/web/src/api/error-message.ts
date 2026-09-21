@@ -7,6 +7,9 @@ const MESSAGES: Record<string, string> = {
   user_inactive: 'Akun ini dinonaktifkan. Hubungi owner.',
   user_not_found: 'User tidak ditemukan.',
   forbidden: 'Anda tidak punya akses.',
+  category_not_found: 'Kategori tidak ditemukan.',
+  category_in_use: 'Kategori masih dipakai produk. Pindahkan produknya dulu.',
+  product_not_found: 'Produk tidak ditemukan.',
   too_many_attempts: 'Terlalu banyak percobaan. Coba lagi dalam 1 menit.',
 };
 

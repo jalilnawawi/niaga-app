@@ -9,8 +9,6 @@ export const updateUserSchema = z
   .partial()
   .refine((v) => Object.keys(v).length > 0);
 
-export const userParamSchema = z.object({ id: z.uuid() });
-
 export type CreateCashier = z.infer<typeof createCashierSchema>;
 export type UpdateUser = z.infer<typeof updateUserSchema>;
 

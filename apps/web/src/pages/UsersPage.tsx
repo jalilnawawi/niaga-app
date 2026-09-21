@@ -6,31 +6,17 @@ import { errorMessage } from '../api/error-message';
 import { createCashier, listUsers, updateUser } from '../api/user.api';
 import { CashierForm } from '../components/user/CashierForm';
 import { UserTable } from '../components/user/UserTable';
+import { useAction } from '../hooks/use-action';
 
 export function UsersPage() {
   const [users, setUsers] = useState<User[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [notice, setNotice] = useState<string | null>(null);
+  const { error, notice, setError, run } = useAction();
 
   useEffect(() => {
     listUsers()
       .then(setUsers)
       .catch((e: unknown) => setError(errorMessage(e)));
-  }, []);
-
-  // Returns true on success so forms know to clear themselves.
-  async function run(action: () => Promise<void>, done: string) {
-    setError(null);
-    setNotice(null);
-    try {
-      await action();
-      setNotice(done);
-      return true;
-    } catch (e) {
-      setError(errorMessage(e));
-      return false;
-    }
-  }
+  }, [setError]);
 
   const create = (values: Record<string, string>) =>
     run(async () => {

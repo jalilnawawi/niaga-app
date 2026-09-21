@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import type { Me } from '@niaga/shared';
 import { getMe, logout } from './api/auth.api';
+import { CatalogPage } from './pages/CatalogPage';
 import { HomePage } from './pages/HomePage';
 import { LoginPage } from './pages/LoginPage';
 import { UsersPage } from './pages/UsersPage';
@@ -23,6 +24,7 @@ export function App() {
       <Routes>
         <Route path="/" element={<HomePage me={me} onLogout={() => logout().then(() => setMe(null))} />} />
         {me.role === 'owner' && <Route path="/kasir" element={<UsersPage />} />}
+        {me.role === 'owner' && <Route path="/katalog" element={<CatalogPage />} />}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
