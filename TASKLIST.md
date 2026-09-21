@@ -56,7 +56,48 @@ Urutan fase = urutan kerja. Tiap fitur mengikuti [CONVENTIONS.md](CONVENTIONS.md
 - [x] Penjualan per produk dan per kasir — `ceb5a04`
 - [x] Export CSV — `ceb5a04`
 
-## 6. Persiapan deploy
+## 6. Desain UI
+
+Web belum punya CSS sama sekali; satu-satunya CSS adalah aturan print struk di `index.html`. Pertama tentukan arah visual dengan skill `frontend-design`. Lalu buat draft di canvas Superdesign. Implementasi dimulai setelah satu arah dipilih.
+
+### 6a. Brief dan arah visual
+
+- [x] Keputusan: perangkat kasir = HP (portrait) dan tablet (landscape). Halaman Jual didesain untuk dua layout ini, laptop cukup ikut layout tablet
+- [x] Brief singkat: pengguna, tempat pakai, dan alur utama, tertulis di bagian Product context pada `.superdesign/design-system.md`
+- [x] Tema utama: gabungan **Uang rupiah** dan **Gerobak stand**
+  - Kerangka dari gerobak stand: warna cat gerobak (toska, kuning, merah cabai) di atas putih, tombol besar dan tegas seperti papan harga, terbaca di layar terang
+  - Warna pecahan rupiah hanya untuk tombol uang cepat di `PaymentForm` (Rp100.000 merah, Rp50.000 biru, Rp20.000 hijau, Rp10.000 ungu), tiap tombol tetap menampilkan nominalnya
+  - Satu elemen paling diingat: tombol uang cepat. Bagian lain tetap tenang agar tidak berebut perhatian
+  - Font: Plus Jakarta Sans (dibuat untuk identitas kota Jakarta)
+  - Selesaikan di rencana desain: merah cabai dan merah Rp100.000 berdekatan, jadi status bahaya (void, kurang bayar) wajib punya teks, bukan warna saja
+- [x] `superdesign init`: analisis repo ke `.superdesign/init/`. Folder itu masuk `.gitignore` karena bisa dibuat ulang; hanya `design-system.md` yang di-commit
+- [x] Rencana desain sesuai `frontend-design` di `.superdesign/design-system.md`: 6 warna dasar dan 4 warna pecahan (semua lolos kontras WCAG AA), Plus Jakarta Sans, layout HP dan tablet, prinsip. Semua draft memakai file ini
+
+### 6b. Draft di canvas Superdesign
+
+- [x] Halaman Jual (`/jual`) lebih dulu karena paling sering dipakai. Dua arah dari model berbeda dibandingkan untuk tablet landscape; arah A dipilih
+- [x] Pilih satu arah, kunci token warna, font, dan jarak. Revisi A: grid 4 kolom, keranjang tanpa harga satuan, tombol Bayar selalu terlihat
+- [x] Halaman Jual versi HP portrait dari arah A: grid 2 kolom, bar total kuning di atas navigasi bawah
+- [ ] Sheet keranjang dan pembayaran versi HP
+- [ ] Draft halaman lain dengan arah yang sama: Login, Beranda, Riwayat, Shift, Kasir, Katalog, Laporan
+- [ ] Draft struk cetak untuk kertas thermal 58 mm (tetap lewat `window.print()`)
+- [ ] Draft state loading, error, dan kosong (belum ada produk, shift belum dibuka, laporan tanpa data)
+
+### 6c. Implementasi di `apps/web`
+
+- [ ] Token sebagai CSS custom properties di `:root`, font, dan style dasar. CSS biasa, tanpa library UI atau CSS baru
+- [ ] Cek Plus Jakarta Sans mendukung angka tabular (`tnum`) agar kolom rupiah rata; kalau tidak, pakai font sistem untuk angka
+- [ ] Aturan styling ditambahkan ke CONVENTIONS.md: letak file CSS dan batas 200 baris juga berlaku untuk CSS
+- [ ] Pindahkan print CSS struk dari `index.html` ke file CSS
+- [ ] Shell aplikasi: navigasi per role (owner melihat Kasir, Katalog, Laporan; kasir tidak)
+- [ ] Komponen `components/ui/` yang dipakai 2+ tempat saja (tombol, field dengan label dan error, `DataTable`)
+- [ ] Terapkan per halaman, urut: Jual, Shift, Riwayat, Katalog, Kasir, Laporan, Login, Beranda
+- [ ] Aksesibilitas: fokus terlihat, kontras WCAG AA, target sentuh minimal 44px, `prefers-reduced-motion` dihormati
+- [ ] Cek lebar 360px (HP) dan tablet lewat screenshot Chrome DevTools, tanpa scroll horizontal
+- [ ] Cek cetak struk di print preview
+- [ ] `bun run lint && bun run typecheck && bun test` hijau
+
+## 7. Persiapan deploy
 
 - [ ] Domain di Cloudflare; aktifkan `routes` di kedua `wrangler.toml` (web dan api satu site agar cookie jalan)
 - [ ] `WEB_ORIGIN` production di `apps/api/wrangler.toml`
@@ -67,7 +108,7 @@ Urutan fase = urutan kerja. Tiap fitur mengikuti [CONVENTIONS.md](CONVENTIONS.md
 - [ ] Cek backup / point-in-time restore Neon
 - [ ] Security review sebelum rilis: filter `tenantId`, cookie, CSRF, rate limit
 
-## 7. Deploy
+## 8. Deploy
 
 - [ ] `bun run lint && bun run typecheck && bun test` hijau di CI
 - [ ] Migrasi production jalan lewat CI

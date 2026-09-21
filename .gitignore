@@ -115,3 +115,7 @@ dist
 # Cloudflare / wrangler
 .wrangler/
 .dev.vars
+
+# Superdesign: init files are regenerable dumps of the source; the design system is the source of truth
+.superdesign/*
+!.superdesign/design-system.md
