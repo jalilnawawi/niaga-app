@@ -1,11 +1,13 @@
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { csrf } from 'hono/csrf';
+import { HTTPException } from 'hono/http-exception';
 import { sql } from 'drizzle-orm';
 import type { Health } from '@niaga/shared';
-import { auth } from './auth/routes';
 import { createDb } from './db/client';
 import type { Env } from './env';
+import { AppError } from './lib/errors';
+import { authController } from './modules/auth/auth.controller';
 
 const app = new Hono<Env>()
   .use('*', (c, next) =>
@@ -21,7 +23,14 @@ const app = new Hono<Env>()
     await db.execute(sql`select 1`);
     return c.json({ status: 'ok' as const });
   })
-  .route('/auth', auth);
+  .route('/auth', authController);
+
+app.onError((err, c) => {
+  if (err instanceof AppError) return c.json({ error: err.code }, err.status);
+  if (err instanceof HTTPException) return err.getResponse();
+  console.error(err);
+  return c.json({ error: 'internal' }, 500);
+});
 
 export type AppType = typeof app;
 export default app;
