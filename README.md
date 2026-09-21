@@ -28,7 +28,7 @@ bun run db:migrate
 ```sh
 bun run lint
 bun run typecheck
-bun test
+bun test                                         # DB tests skip unless DATABASE_URL is set (local DB, migrated)
 bun run --filter '@niaga/web' build && bun run check:web-bundle
 ```
 
