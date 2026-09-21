@@ -47,8 +47,8 @@ Urutan fase = urutan kerja. Tiap fitur mengikuti [CONVENTIONS.md](CONVENTIONS.md
 
 ## 4. Shift dan kas
 
-- [ ] Buka shift dengan modal awal, tutup shift dengan hitung kas
-- [ ] Selisih kas tercatat per shift per kasir
+- [x] Buka shift dengan modal awal, tutup shift dengan hitung kas — `e071de7`
+- [x] Selisih kas tercatat per shift per kasir — `e071de7`
 
 ## 5. Laporan
 
