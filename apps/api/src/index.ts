@@ -8,6 +8,7 @@ import { createDb } from './db/client';
 import type { Env } from './env';
 import { AppError } from './lib/errors';
 import { authController } from './modules/auth/auth.controller';
+import { userController } from './modules/user/user.controller';
 
 const app = new Hono<Env>()
   .use('*', (c, next) =>
@@ -15,15 +16,19 @@ const app = new Hono<Env>()
   )
   // Cookie auth: reject cross-site form posts by Origin.
   .use('*', (c, next) => csrf({ origin: c.env.WEB_ORIGIN })(c, next))
+  .use('*', async (c, next) => {
+    c.set('db', createDb(c.env.DATABASE_URL));
+    await next();
+  })
   .get('/health', (c) =>
     c.json<Health>({ status: 'ok', time: new Date().toISOString() }),
   )
   .get('/health/db', async (c) => {
-    const db = createDb(c.env.DATABASE_URL);
-    await db.execute(sql`select 1`);
+    await c.var.db.execute(sql`select 1`);
     return c.json({ status: 'ok' as const });
   })
-  .route('/auth', authController);
+  .route('/auth', authController)
+  .route('/users', userController);
 
 app.onError((err, c) => {
   if (err instanceof AppError) return c.json({ error: err.code }, err.status);

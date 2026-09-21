@@ -12,17 +12,19 @@ Urutan fase = urutan kerja. Tiap fitur mengikuti [CONVENTIONS.md](CONVENTIONS.md
 
 ## 0. Keputusan produk (blokir fase 2–4)
 
-- [ ] Model tenant: satu tenant = pengelola food court (banyak stand), atau satu tenant = satu stand?
-- [ ] Metode bayar di MVP: tunai saja, atau tunai + QRIS (statis / payment gateway)?
-- [ ] Struk: cetak thermal (Bluetooth/USB), tampil di layar, atau tanpa struk?
-- [ ] Perlu mode offline? Kalau ya, fase 3 jauh lebih besar.
-- [ ] Stok dilacak di MVP atau belakangan?
+- [x] Model tenant: satu tenant = satu stand
+- [x] Metode bayar MVP: tunai + QRIS statis (kasir tandai lunas manual, tanpa gateway)
+- [x] Struk: tampil di layar, cetak via `window.print()`; printer thermal belakangan
+- [x] Mode offline: tidak, online saja
+- [x] Stok: belakangan
 
 ## 1. Fondasi
 
 - [ ] Web: pasang router (hapus `ponytail:` di `App.tsx`) begitu ada halaman login kedua
 - [ ] Owner mengelola kasir: tambah, nonaktifkan, reset password (pindahkan `users` ke modul `user`)
-- [ ] Middleware role (`requireRole('owner')`) untuk route khusus owner
+  - [x] API `/users`: list, tambah kasir, `PATCH` aktif/password (cabut semua session)
+  - [ ] Halaman kelola kasir di web
+- [x] Middleware role (`requireRole('owner')`) untuk route khusus owner
 - [ ] Batasi percobaan login (rate limit per email/IP)
 - [ ] Hapus session kedaluwarsa (cron trigger Worker atau hapus saat lookup)
 
@@ -37,6 +39,7 @@ Urutan fase = urutan kerja. Tiap fitur mengikuti [CONVENTIONS.md](CONVENTIONS.md
 - [ ] Model `orders` + `order_items`; item menyimpan snapshot nama dan harga saat transaksi
 - [ ] Buat order dari keranjang dalam satu `db.batch`
 - [ ] Pembayaran tunai: jumlah dibayar, kembalian, validasi kurang bayar
+- [ ] Pembayaran QRIS statis: kasir tandai lunas, metode tercatat di order
 - [ ] Nomor struk berurutan per tenant per hari (dijaga unique constraint)
 - [ ] Void / refund, hanya owner, dengan alasan
 - [ ] Halaman kasir: grid produk, keranjang, bayar, struk

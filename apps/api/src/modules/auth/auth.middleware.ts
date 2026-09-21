@@ -26,3 +26,10 @@ export const requireAuth = createMiddleware<Env & { Variables: { user: Me } }>(a
   c.set('user', user);
   await next();
 });
+
+// Use after requireAuth.
+export const requireRole = (role: Me['role']) =>
+  createMiddleware<Env & { Variables: { user: Me } }>(async (c, next) => {
+    if (c.var.user.role !== role) return c.json({ error: 'forbidden' }, 403);
+    await next();
+  });

@@ -2,7 +2,8 @@ import { describe, expect, test } from 'bun:test';
 import { healthSchema } from '@niaga/shared';
 import app from './index';
 
-const env = { DATABASE_URL: '', WEB_ORIGIN: 'http://localhost:5173' };
+// Any well-formed URL: neon() validates it eagerly but only connects on the first query.
+const env = { DATABASE_URL: 'postgres://u:p@localhost/db', WEB_ORIGIN: 'http://localhost:5173' };
 
 describe('GET /health', () => {
   test('returns ok', async () => {

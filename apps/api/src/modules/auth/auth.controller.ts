@@ -1,16 +1,11 @@
 import { Hono } from 'hono';
 import { loginSchema, signupSchema } from '@niaga/shared';
-import { createDb } from '../../db/client';
 import type { Env } from '../../env';
 import { validate } from '../../lib/validate';
 import { clearSessionCookie, getSessionToken, requireAuth, setSessionCookie } from './auth.middleware';
 import * as authService from './auth.service';
 
 export const authController = new Hono<Env>()
-  .use('*', async (c, next) => {
-    c.set('db', createDb(c.env.DATABASE_URL));
-    await next();
-  })
   .post('/signup', validate('json', signupSchema), async (c) => {
     setSessionCookie(c, await authService.signup(c.var.db, c.req.valid('json')));
     return c.json({ ok: true as const }, 201);

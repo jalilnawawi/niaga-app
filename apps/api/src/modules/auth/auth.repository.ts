@@ -1,6 +1,8 @@
 import { and, eq, gt } from 'drizzle-orm';
 import type { Db } from '../../db/client';
-import { sessions, tenants, users } from './auth.model';
+import { tenants } from '../tenant/tenant.model';
+import { users } from '../user/user.model';
+import { sessions } from './auth.model';
 
 // Auth runs before a tenant is known, so these lookups are global by design: emails are unique across tenants.
 export async function findUserByEmail(db: Db, email: string) {
@@ -27,4 +29,8 @@ export const insertSession = (db: Db, values: typeof sessions.$inferInsert) => d
 
 export async function deleteSession(db: Db, sessionId: string) {
   await db.delete(sessions).where(eq(sessions.id, sessionId));
+}
+
+export async function deleteUserSessions(db: Db, userId: string) {
+  await db.delete(sessions).where(eq(sessions.userId, userId));
 }

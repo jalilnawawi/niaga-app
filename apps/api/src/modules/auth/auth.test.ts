@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 import app from '../../index';
-import { hashPassword, verifyPassword } from './password';
+import { hashPassword, verifyPassword } from '../../lib/password';
 
 test('password hash round-trips', async () => {
   const hash = await hashPassword('correct horse');

@@ -2,7 +2,7 @@ import type { Login, Me, Signup } from '@niaga/shared';
 import type { Db } from '../../db/client';
 import { AppError } from '../../lib/errors';
 import * as repo from './auth.repository';
-import { hashPassword, verifyPassword } from './password';
+import { hashPassword, verifyPassword } from '../../lib/password';
 
 const TTL_MS = 30 * 24 * 60 * 60 * 1000;
 
@@ -50,6 +50,7 @@ export async function login(db: Db, input: Login): Promise<Session> {
   if (!user || !(await verifyPassword(input.password, user.passwordHash))) {
     throw new AppError(401, 'invalid_credentials');
   }
+  if (!user.active) throw new AppError(403, 'user_inactive');
   const { session, insert } = await newSession(db, user.id);
   await insert;
   return session;
@@ -57,6 +58,11 @@ export async function login(db: Db, input: Login): Promise<Session> {
 
 export async function logout(db: Db, token: string) {
   await repo.deleteSession(db, await sessionId(token));
+}
+
+// Signs the user out everywhere, e.g. after deactivation or a password reset.
+export async function revokeSessions(db: Db, userId: string) {
+  await repo.deleteUserSessions(db, userId);
 }
 
 // ponytail: fixed 30-day expiry, no sliding renewal and no expired-row cleanup; add a cron when the table grows.

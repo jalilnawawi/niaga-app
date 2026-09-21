@@ -8,6 +8,13 @@
       "when": 1789972834010,
       "tag": "0000_keen_champions",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1789981989945,
+      "tag": "0001_calm_photon",
+      "breakpoints": true
     }
   ]
 }
