@@ -36,14 +36,14 @@ Urutan fase = urutan kerja. Tiap fitur mengikuti [CONVENTIONS.md](CONVENTIONS.md
 
 ## 3. Transaksi (inti POS)
 
-- [ ] Model `orders` + `order_items`; item menyimpan snapshot nama dan harga saat transaksi
-- [ ] Buat order dari keranjang dalam satu `db.batch`
-- [ ] Pembayaran tunai: jumlah dibayar, kembalian, validasi kurang bayar
-- [ ] Pembayaran QRIS statis: kasir tandai lunas, metode tercatat di order
-- [ ] Nomor struk berurutan per tenant per hari (dijaga unique constraint)
-- [ ] Void / refund, hanya owner, dengan alasan
-- [ ] Halaman kasir: grid produk, keranjang, bayar, struk
-- [ ] Riwayat transaksi hari ini
+- [x] Model `orders` + `order_items`; item menyimpan snapshot nama dan harga saat transaksi — `84f731d`
+- [x] Buat order dari keranjang dalam satu `db.batch` — `84f731d`
+- [x] Pembayaran tunai: jumlah dibayar, kembalian, validasi kurang bayar — `84f731d`
+- [x] Pembayaran QRIS statis: kasir tandai lunas, metode tercatat di order — `84f731d`
+- [x] Nomor struk berurutan per tenant per hari (dijaga unique constraint) — `84f731d`
+- [x] Void / refund, hanya owner, dengan alasan — `84f731d`
+- [x] Halaman kasir: grid produk, keranjang, bayar, struk — `84f731d`
+- [x] Riwayat transaksi hari ini — `84f731d`
 
 ## 4. Shift dan kas
 
