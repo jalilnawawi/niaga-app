@@ -18,16 +18,18 @@ export function CategoryList({ categories, onCreate, onRename, onDelete }: Props
   }
 
   return (
-    <section aria-labelledby="categories-heading">
+    <section className="card" aria-labelledby="categories-heading">
       <h2 id="categories-heading">Kategori</h2>
       <form onSubmit={create} aria-label="Tambah kategori">
         <label>
           Nama kategori <input name="name" required maxLength={50} autoComplete="off" />
         </label>
-        <button type="submit">Tambah kategori</button>
+        <button type="submit" className="primary">
+          Tambah kategori
+        </button>
       </form>
       {categories.length === 0 && <p>Belum ada kategori.</p>}
-      <ul>
+      <ul className="category-list">
         {categories.map((c) => (
           // key includes the name so the input resets to the saved value after a rename.
           <li key={`${c.id}:${c.name}`}>
@@ -39,7 +41,7 @@ export function CategoryList({ categories, onCreate, onRename, onDelete }: Props
             >
               <input name="name" aria-label={`Nama kategori ${c.name}`} defaultValue={c.name} required maxLength={50} autoComplete="off" />
               <button type="submit">Simpan</button>
-              <button type="button" onClick={() => onDelete(c.id)} aria-label={`Hapus ${c.name}`}>
+              <button type="button" className="danger" onClick={() => onDelete(c.id)} aria-label={`Hapus ${c.name}`}>
                 Hapus
               </button>
             </form>

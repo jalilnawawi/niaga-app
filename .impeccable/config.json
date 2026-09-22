@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "plus jakarta sans",
+        "createdAt": "2026-09-22T07:52:41.887Z",
+        "reason": "Chosen in phase 6a design brief (TASKLIST.md 6a, .superdesign/design-system.md): font made for Jakarta's city identity"
+      }
+    ]
+  }
+}

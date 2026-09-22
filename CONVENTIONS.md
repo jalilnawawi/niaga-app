@@ -140,6 +140,15 @@ apps/web/src/
 - One per route. Loads data via `api/`, handles loading / error / empty states, composes components.
 - No reusable UI defined inside a page file; extract to `components/` once it is used twice or pushes the page past 200 lines.
 
+### Styling — `styles/`
+
+- Plain CSS in `apps/web/src/styles/*.css`, imported once in `main.tsx`. No CSS-in-JS, no UI or utility library.
+- Tokens are the custom properties on `:root` in `base.css`, named as in `.superdesign/design-system.md` (`--toska`, `--kuning`, ...). Use a token, never a raw hex; the banknote colours in `payment.css` are the one exception.
+- One file per concern (`base`, `controls`, `shell`, `pos`, `payment`, `print`). The 200-line limit applies to CSS too (not lint-enforced; checked in review).
+- Components use plain class names (`primary`, `card`, `num`); no inline `style`.
+- Money cells get `className="num"` (tabular numerals, right-aligned). Tables sit in a `.table-wrap` so a wide table scrolls, never the page.
+- Receipt print rules live in `print.css`; only `.receipt` prints.
+
 ### Dependency direction
 
 ```

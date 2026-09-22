@@ -12,7 +12,7 @@ export function ResetPasswordForm({ userName, onSubmit }: Props) {
   return (
     <form onSubmit={submit}>
       <label>
-        Password baru untuk {userName}{' '}
+        Password baru untuk {userName}
         <input name="password" type="password" required minLength={8} maxLength={128} autoComplete="new-password" />
       </label>
       <button type="submit">Reset</button>

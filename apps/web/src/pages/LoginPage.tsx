@@ -23,9 +23,14 @@ export function LoginPage({ onLoggedIn }: Props) {
   }
 
   return (
-    <main>
-      <h1>Niaga</h1>
-      <AuthForm mode={mode} error={error} onSubmit={submit} onToggleMode={() => setMode(mode === 'login' ? 'signup' : 'login')} />
+    <main className="auth">
+      <div className="card">
+        <header className="page-head">
+          <h1 className="wordmark">Niaga</h1>
+          <p className="muted">Kasir untuk stand kaki lima</p>
+        </header>
+        <AuthForm mode={mode} error={error} onSubmit={submit} onToggleMode={() => setMode(mode === 'login' ? 'signup' : 'login')} />
+      </div>
     </main>
   );
 }

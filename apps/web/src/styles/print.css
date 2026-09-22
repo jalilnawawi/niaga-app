@@ -1,0 +1,75 @@
+/* Receipt: 58 mm thermal paper, black on white, on screen and in print. */
+.receipt {
+  display: grid;
+  gap: 8px;
+  width: 58mm;
+  max-width: 100%;
+  padding: 12px;
+  border: 2px solid var(--abu);
+  background: var(--putih);
+  color: #000;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.receipt h2 {
+  font-size: 16px;
+  text-align: center;
+}
+
+.receipt table {
+  border-top: 1px dashed #000;
+  border-bottom: 1px dashed #000;
+}
+
+.receipt td {
+  padding: 4px 0;
+  background: none;
+}
+
+.receipt tbody tr:nth-child(even) {
+  background: none;
+}
+
+.receipt td:last-child {
+  text-align: right;
+  white-space: nowrap;
+  padding-left: 8px;
+}
+
+.receipt .receipt-total {
+  font-weight: 800;
+}
+
+.receipt .receipt-void {
+  padding: 4px;
+  border: 2px solid #000;
+  font-weight: 800;
+  text-align: center;
+}
+
+/* window.print() prints only the receipt. */
+@media print {
+  @page {
+    size: 58mm auto;
+    margin: 0;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .receipt,
+  .receipt * {
+    visibility: visible;
+  }
+
+  .receipt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 58mm;
+    padding: 2mm;
+    border: 0;
+  }
+}

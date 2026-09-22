@@ -28,7 +28,7 @@ export function ProductForm({ categories, product, onSubmit, onCancel }: Props) 
         Nama produk <input name="name" defaultValue={product?.name} required maxLength={100} autoComplete="off" />
       </label>
       <label>
-        Harga (Rp) <input name="price" type="number" defaultValue={product?.price} required min={0} max={100_000_000} step={1} />
+        Harga (Rp) <input name="price" type="number" inputMode="numeric" defaultValue={product?.price} required min={0} max={100_000_000} step={1} />
       </label>
       <label>
         Kategori{' '}
@@ -41,7 +41,7 @@ export function ProductForm({ categories, product, onSubmit, onCancel }: Props) 
           ))}
         </select>
       </label>
-      <button type="submit">{product ? 'Simpan produk' : 'Tambah produk'}</button>
+      <button type="submit" className="primary">{product ? 'Simpan produk' : 'Tambah produk'}</button>
       {onCancel && (
         <button type="button" onClick={onCancel}>
           Batal

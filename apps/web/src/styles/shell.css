@@ -1,0 +1,146 @@
+/* App shell: bottom bar on phone, left rail on tablet and up. */
+.shell {
+  min-height: 100dvh;
+  padding-bottom: var(--nav-h);
+}
+
+.nav {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 10;
+  display: flex;
+  background: var(--putih);
+  border-top: 2px solid var(--tinta);
+}
+
+.nav-brand,
+.nav-user,
+.nav .rail-only {
+  display: none;
+}
+
+.nav ul {
+  display: flex;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav li {
+  flex: 1;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--nav-h);
+  color: var(--tinta);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.nav a[aria-current='page'] {
+  background: var(--toska);
+  color: var(--putih);
+}
+
+@media (min-width: 900px) {
+  .shell {
+    padding: 0 0 0 var(--rail-w);
+  }
+
+  .nav {
+    inset: 0 auto 0 0;
+    width: var(--rail-w);
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 8px;
+    border-top: 0;
+    border-right: 2px solid var(--abu);
+  }
+
+  .nav-brand,
+  .nav-user,
+  .nav .rail-only {
+    display: block;
+  }
+
+  .nav-brand {
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--toska);
+  }
+
+  .nav ul {
+    flex: none;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .nav a {
+    height: var(--touch);
+    border-radius: var(--radius);
+  }
+
+  .nav-user {
+    margin-top: auto;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Beranda tiles. */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tiles a {
+  display: grid;
+  gap: 4px;
+  min-height: 96px;
+  padding: 16px;
+  border: var(--border);
+  border-radius: var(--radius);
+  color: var(--tinta);
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.tiles a span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.tiles a.primary {
+  border-color: var(--toska);
+  background: var(--toska);
+  color: var(--putih);
+}
+
+/* Login and signup: one centred card on abu. */
+.auth {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  padding: 16px;
+  background: var(--abu);
+}
+
+.auth > .card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--putih);
+}
+
+.wordmark {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--toska);
+}

@@ -1,0 +1,88 @@
+/* /jual payment step: total board, method tabs, quick-cash, change, pay button. */
+.total-board {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.total-board strong {
+  font-size: 32px;
+}
+
+/* Tunai / QRIS as two big segments. The radio stays in the tab order. */
+.segmented {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.segmented label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch);
+  border: 2px solid var(--tinta);
+  border-radius: var(--radius);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.segmented label:has(:checked) {
+  border-color: var(--toska);
+  background: var(--toska);
+  color: var(--putih);
+}
+
+.segmented label:has(:focus-visible) {
+  outline: 3px solid var(--tinta);
+  outline-offset: 2px;
+}
+
+.segmented input {
+  position: absolute;
+  opacity: 0;
+}
+
+/* Quick-cash: the only place banknote colors appear. White text passes AA on all four. */
+.quick-cash {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.quick-cash button {
+  min-height: 64px;
+  border: 0;
+  color: var(--putih);
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+}
+
+.quick-cash .rp100 { background: #c2185b; }
+.quick-cash .rp50 { background: #1f5fae; }
+.quick-cash .rp20 { background: #23784a; }
+.quick-cash .rp10 { background: #7b3fa0; }
+
+.quick-cash .exact {
+  grid-column: 1 / -1;
+  border: 2px solid var(--tinta);
+  background: var(--abu);
+  color: var(--tinta);
+}
+
+.pay {
+  position: sticky;
+  bottom: 0;
+}
+
+.change {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.change.short {
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  background: var(--cabai);
+  color: var(--putih);
+}

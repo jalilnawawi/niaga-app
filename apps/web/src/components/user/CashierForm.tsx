@@ -10,7 +10,7 @@ export function CashierForm({ onSubmit }: Props) {
   }
 
   return (
-    <form onSubmit={submit} aria-label="Tambah kasir">
+    <form onSubmit={submit} aria-label="Tambah kasir" className="stack">
       <label>
         Nama <input name="name" required maxLength={100} autoComplete="off" />
       </label>
@@ -20,7 +20,9 @@ export function CashierForm({ onSubmit }: Props) {
       <label>
         Password <input name="password" type="password" required minLength={8} maxLength={128} autoComplete="new-password" />
       </label>
-      <button type="submit">Tambah kasir</button>
+      <button type="submit" className="primary">
+        Tambah kasir
+      </button>
     </form>
   );
 }

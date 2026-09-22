@@ -18,9 +18,10 @@ export function CashForm({ label, submitLabel, onSubmit }: Props) {
   return (
     <form onSubmit={submit} aria-label={submitLabel}>
       <label>
-        {label} (Rp) <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} required min={0} step={1} />
+        {label} (Rp)
+        <input type="number" inputMode="numeric" value={amount} onChange={(e) => setAmount(e.target.value)} required min={0} step={1} />
       </label>
-      <button type="submit" disabled={busy}>
+      <button type="submit" className="primary" disabled={busy}>
         {submitLabel}
       </button>
     </form>

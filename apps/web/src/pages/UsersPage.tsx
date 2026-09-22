@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router';
 import type { UpdateUser, User } from '@niaga/shared';
 import { createCashierSchema, updateUserSchema } from '@niaga/shared';
 import { errorMessage } from '../api/error-message';
@@ -31,17 +30,21 @@ export function UsersPage() {
     }, input.password ? 'Password direset. Kasir perlu login ulang.' : 'Status kasir diubah.');
 
   return (
-    <main>
-      <p>
-        <Link to="/">← Beranda</Link>
-      </p>
+    <main className="page">
       <h1>Kelola kasir</h1>
       {error && <p role="alert">{error}</p>}
       {notice && <p role="status">{notice}</p>}
-      <CashierForm onSubmit={create} />
-      {users === null && !error && <p>Loading…</p>}
-      {users?.every((u) => u.role === 'owner') && <p>Belum ada kasir.</p>}
-      {users && <UserTable users={users} onUpdate={update} />}
+      <div className="split side-first">
+        <section className="card" aria-labelledby="add-cashier">
+          <h2 id="add-cashier">Tambah kasir</h2>
+          <CashierForm onSubmit={create} />
+        </section>
+        <div className="card">
+          {users === null && !error && <p>Memuat…</p>}
+          {users?.every((u) => u.role === 'owner') && <p>Belum ada kasir. Tambahkan kasir pertama di formulir.</p>}
+          {users && <UserTable users={users} onUpdate={update} />}
+        </div>
+      </div>
     </main>
   );
 }

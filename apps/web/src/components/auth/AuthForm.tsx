@@ -17,14 +17,14 @@ export function AuthForm({ mode, error, onSubmit, onToggleMode }: Props) {
 
   return (
     <>
-      <form onSubmit={submit}>
+      <form onSubmit={submit} className="stack">
         {mode === 'signup' && (
           <>
             <label>
               Nama <input name="name" required maxLength={100} autoComplete="name" />
             </label>
             <label>
-              Nama tenant <input name="tenantName" required maxLength={100} />
+              Nama stand <input name="tenantName" required maxLength={100} />
             </label>
           </>
         )}
@@ -32,7 +32,7 @@ export function AuthForm({ mode, error, onSubmit, onToggleMode }: Props) {
           Email <input name="email" type="email" required autoComplete="email" />
         </label>
         <label>
-          Password{' '}
+          Password
           <input
             name="password"
             type="password"
@@ -42,10 +42,10 @@ export function AuthForm({ mode, error, onSubmit, onToggleMode }: Props) {
             autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
           />
         </label>
-        <button type="submit">{mode === 'login' ? 'Login' : 'Daftar'}</button>
+        <button type="submit" className="primary big">{mode === 'login' ? 'Login' : 'Daftar'}</button>
       </form>
       {error && <p role="alert">{error}</p>}
-      <button type="button" onClick={onToggleMode}>
+      <button type="button" className="link" onClick={onToggleMode}>
         {mode === 'login' ? 'Belum punya akun? Daftar' : 'Sudah punya akun? Login'}
       </button>
     </>

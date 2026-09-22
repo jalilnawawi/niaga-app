@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
-import { Link } from 'react-router';
 import type { SalesReport, SalesReportQuery } from '@niaga/shared';
 import { salesReportQuerySchema } from '@niaga/shared';
 import { errorMessage } from '../api/error-message';
@@ -35,28 +34,34 @@ export function ReportPage() {
   const total = report?.days.reduce((sum, d) => sum + d.total, 0) ?? 0;
 
   return (
-    <main>
-      <p>
-        <Link to="/">← Beranda</Link>
-      </p>
+    <main className="page">
       <h1>Laporan penjualan</h1>
-      <form onSubmit={submit} aria-label="Rentang tanggal">
+      <form onSubmit={submit} aria-label="Rentang tanggal" className="card">
         <label>
-          Dari <input type="date" value={form.from} onChange={(e) => setForm({ ...form, from: e.target.value })} required />
+          Dari
+          <input type="date" value={form.from} onChange={(e) => setForm({ ...form, from: e.target.value })} required />
         </label>{' '}
         <label>
-          Sampai <input type="date" value={form.to} onChange={(e) => setForm({ ...form, to: e.target.value })} required />
+          Sampai
+          <input type="date" value={form.to} onChange={(e) => setForm({ ...form, to: e.target.value })} required />
         </label>{' '}
-        <button type="submit">Tampilkan</button>
+        <button type="submit" className="primary">
+          Tampilkan
+        </button>
       </form>
       {error && <p role="alert">{error}</p>}
-      {!report && !error && <p>Loading…</p>}
+      {!report && !error && <p>Memuat…</p>}
       {report && (
         <>
-          <p>
-            {report.days.reduce((n, d) => n + d.orders, 0)} transaksi lunas · {rupiah.format(total)} (void tidak dihitung)
+          <p className="board">
+            {report.days.reduce((n, d) => n + d.orders, 0)} transaksi lunas · {rupiah.format(total)}{' '}
+            <span className="muted">(void tidak dihitung)</span>
           </p>
-          <SalesReportTables report={report} from={query.from} to={query.to} />
+          {report.days.length === 0 ? (
+            <p>Tidak ada transaksi di rentang ini. Coba ubah tanggal.</p>
+          ) : (
+            <SalesReportTables report={report} from={query.from} to={query.to} />
+          )}
         </>
       )}
     </main>

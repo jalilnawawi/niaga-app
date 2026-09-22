@@ -78,24 +78,24 @@ Web belum punya CSS sama sekali; satu-satunya CSS adalah aturan print struk di `
 - [x] Halaman Jual (`/jual`) lebih dulu karena paling sering dipakai. Dua arah dari model berbeda dibandingkan untuk tablet landscape; arah A dipilih
 - [x] Pilih satu arah, kunci token warna, font, dan jarak. Revisi A: grid 4 kolom, keranjang tanpa harga satuan, tombol Bayar selalu terlihat
 - [x] Halaman Jual versi HP portrait dari arah A: grid 2 kolom, bar total kuning di atas navigasi bawah
-- [ ] Sheet keranjang dan pembayaran versi HP
-- [ ] Draft halaman lain dengan arah yang sama: Login, Beranda, Riwayat, Shift, Kasir, Katalog, Laporan
-- [ ] Draft struk cetak untuk kertas thermal 58 mm (tetap lewat `window.print()`)
-- [ ] Draft state loading, error, dan kosong (belum ada produk, shift belum dibuka, laporan tanpa data)
+- [x] Sheet keranjang dan pembayaran versi HP
+- [x] Draft halaman lain dengan arah yang sama: Login, Beranda, Riwayat, Shift, Kasir, Katalog, Laporan
+- [x] Draft struk cetak untuk kertas thermal 58 mm (tetap lewat `window.print()`)
+- [x] Draft state loading, error, dan kosong (belum ada produk, shift belum dibuka, laporan tanpa data)
 
 ### 6c. Implementasi di `apps/web`
 
-- [ ] Token sebagai CSS custom properties di `:root`, font, dan style dasar. CSS biasa, tanpa library UI atau CSS baru
-- [ ] Cek Plus Jakarta Sans mendukung angka tabular (`tnum`) agar kolom rupiah rata; kalau tidak, pakai font sistem untuk angka
-- [ ] Aturan styling ditambahkan ke CONVENTIONS.md: letak file CSS dan batas 200 baris juga berlaku untuk CSS
-- [ ] Pindahkan print CSS struk dari `index.html` ke file CSS
-- [ ] Shell aplikasi: navigasi per role (owner melihat Kasir, Katalog, Laporan; kasir tidak)
-- [ ] Komponen `components/ui/` yang dipakai 2+ tempat saja (tombol, field dengan label dan error, `DataTable`)
-- [ ] Terapkan per halaman, urut: Jual, Shift, Riwayat, Katalog, Kasir, Laporan, Login, Beranda
-- [ ] Aksesibilitas: fokus terlihat, kontras WCAG AA, target sentuh minimal 44px, `prefers-reduced-motion` dihormati
-- [ ] Cek lebar 360px (HP) dan tablet lewat screenshot Chrome DevTools, tanpa scroll horizontal
+- [x] Token sebagai CSS custom properties di `:root`, font, dan style dasar. CSS biasa, tanpa library UI atau CSS baru
+- [x] Cek Plus Jakarta Sans mendukung angka tabular (`tnum`) agar kolom rupiah rata: didukung (subset latin Google Fonts punya fitur `tnum`)
+- [x] Aturan styling ditambahkan ke CONVENTIONS.md: letak file CSS dan batas 200 baris juga berlaku untuk CSS
+- [x] Pindahkan print CSS struk dari `index.html` ke file CSS
+- [x] Shell aplikasi: navigasi per role (owner melihat Kasir, Katalog, Laporan; kasir tidak)
+- [x] Komponen `components/ui/` yang dipakai 2+ tempat saja: tombol dan field cukup class CSS (`primary`, `danger`, label bawaan), `DataTable` sudah ada
+- [x] Terapkan per halaman, urut: Jual, Shift, Riwayat, Katalog, Kasir, Laporan, Login, Beranda
+- [x] Aksesibilitas: fokus terlihat, kontras WCAG AA, target sentuh minimal 44px, `prefers-reduced-motion` dihormati
+- [x] Cek lebar 360px (HP) dan tablet lewat screenshot Chrome DevTools, tanpa scroll horizontal
 - [ ] Cek cetak struk di print preview
-- [ ] `bun run lint && bun run typecheck && bun test` hijau
+- [x] `bun run lint && bun run typecheck && bun test` hijau
 
 ## 7. Persiapan deploy
 

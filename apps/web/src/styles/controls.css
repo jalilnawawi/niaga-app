@@ -1,0 +1,186 @@
+/* Buttons: secondary by default, .primary for the next tap, .danger for void/delete. */
+button,
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: var(--touch);
+  padding: 8px 16px;
+  border: 2px solid var(--tinta);
+  border-radius: var(--radius);
+  background: var(--putih);
+  color: var(--tinta);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button.primary,
+.button.primary {
+  border-color: var(--toska);
+  background: var(--toska);
+  color: var(--putih);
+}
+
+button.danger {
+  border-color: var(--cabai);
+  color: var(--cabai);
+}
+
+button.link {
+  border-color: transparent;
+  background: none;
+  color: var(--toska);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.big {
+  min-height: 64px;
+  font-size: 20px;
+  width: 100%;
+}
+
+/* Forms: a wrapping row of labelled fields; .stack puts them in one column. */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: end;
+}
+
+form.stack {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+label {
+  display: grid;
+  gap: 4px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+input,
+select {
+  min-height: var(--touch);
+  min-width: 0;
+  padding: 8px 12px;
+  border: 2px solid var(--tinta);
+  border-radius: var(--radius);
+  background: var(--putih);
+  color: var(--tinta);
+  font: inherit;
+  font-size: 16px;
+}
+
+input[type='number'] {
+  font-variant-numeric: tabular-nums;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+/* Messages always carry text; color only backs it up. */
+[role='alert'],
+[role='status'] {
+  padding: 12px 16px;
+  border: 2px solid var(--cabai);
+  border-radius: var(--radius);
+  font-weight: 700;
+}
+
+[role='alert'] {
+  color: var(--cabai);
+}
+
+[role='status'] {
+  border-color: var(--toska);
+}
+
+[role='alert'] a,
+[role='alert'] .button {
+  margin-top: 8px;
+}
+
+/* Tables: flat, square, abu stripes; wrapper scrolls so the page never does. */
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+  font-weight: 800;
+  font-size: 20px;
+  padding-bottom: 8px;
+}
+
+th,
+td {
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+th {
+  border-bottom: 2px solid var(--tinta);
+  font-size: 14px;
+}
+
+tbody tr:nth-child(even) {
+  background: var(--abu);
+}
+
+tr.off {
+  color: color-mix(in srgb, var(--tinta) 60%, var(--putih));
+}
+
+/* Stays a table cell (flex here would break row layout); gaps via margin. */
+td.actions {
+  white-space: nowrap;
+}
+
+td.actions > * + * {
+  margin-left: 8px;
+}
+
+td.actions > form {
+  margin: 8px 0 0;
+  white-space: normal;
+}
+
+.bad {
+  color: var(--cabai);
+  font-weight: 700;
+}
+
+.category-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.category-list input {
+  flex: 1 1 100%;
+}

@@ -1,0 +1,138 @@
+/* Tokens from .superdesign/design-system.md. Banknote colors live in pos.css only. */
+:root {
+  --putih: #ffffff;
+  --abu: #eef2f1;
+  --tinta: #16302e;
+  --toska: #0b7a75;
+  --kuning: #ffc928;
+  --cabai: #c62828;
+
+  --radius: 12px;
+  --border: 2px solid var(--abu);
+  --touch: 48px;
+  --nav-h: 64px;
+  --rail-w: 104px;
+
+  color-scheme: light;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--tinta);
+  background: var(--putih);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+a {
+  color: var(--toska);
+  font-weight: 700;
+}
+
+/* One focus style everywhere: tinta ring clears 3:1 on white, abu, and kuning. */
+:focus-visible {
+  outline: 3px solid var(--tinta);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.muted {
+  color: color-mix(in srgb, var(--tinta) 70%, var(--putih));
+  font-size: 14px;
+}
+
+/* Page frame used by every page except /jual, which owns its full-height layout. */
+.page {
+  display: grid;
+  gap: 24px;
+  align-content: start;
+  padding: 24px 16px;
+  max-width: 1200px;
+}
+
+.page-head {
+  display: grid;
+  gap: 4px;
+}
+
+.card {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+  padding: 16px;
+  border: var(--border);
+  border-radius: var(--radius);
+}
+
+/* The kuning price board: the one loud element outside the payment step. */
+.board {
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  background: var(--kuning);
+  color: var(--tinta);
+  font-weight: 800;
+  font-size: 20px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Main column plus a fixed side column on tablet; stacked on phone. */
+.split {
+  display: grid;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .page {
+    padding: 32px;
+  }
+
+  .split {
+    grid-template-columns: minmax(0, 1fr) 340px;
+  }
+
+  .split.side-first {
+    grid-template-columns: 320px minmax(0, 1fr);
+  }
+}

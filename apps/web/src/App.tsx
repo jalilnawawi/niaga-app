@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import type { Me } from '@niaga/shared';
 import { getMe, logout } from './api/auth.api';
+import { AppShell } from './components/shell/AppShell';
 import { CatalogPage } from './pages/CatalogPage';
 import { HomePage } from './pages/HomePage';
 import { LoginPage } from './pages/LoginPage';
@@ -21,11 +22,17 @@ export function App() {
     loadMe();
   }, []);
 
-  if (me === undefined) return <main>{error ?? 'Loading…'}</main>;
+  if (me === undefined)
+    return (
+      <main className="page">
+        {error ? <p role="alert">{error}</p> : <p>Memuat…</p>}
+      </main>
+    );
   if (!me) return <LoginPage onLoggedIn={loadMe} />;
   return (
     <BrowserRouter>
       <Routes>
+        <Route element={<AppShell me={me} />}>
         <Route path="/" element={<HomePage me={me} onLogout={() => logout().then(() => setMe(null))} />} />
         <Route path="/jual" element={<PosPage me={me} />} />
         <Route path="/riwayat" element={<OrdersPage me={me} />} />
@@ -33,6 +40,7 @@ export function App() {
         {me.role === 'owner' && <Route path="/kasir" element={<UsersPage />} />}
         {me.role === 'owner' && <Route path="/katalog" element={<CatalogPage />} />}
         {me.role === 'owner' && <Route path="/laporan" element={<ReportPage />} />}
+        </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

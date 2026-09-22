@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router';
 import type { Me, Shift } from '@niaga/shared';
 import { closeShiftSchema, openShiftSchema } from '@niaga/shared';
 import { errorMessage } from '../api/error-message';
@@ -44,26 +43,28 @@ export function ShiftPage({ me }: Props) {
     }, 'Shift ditutup.');
 
   return (
-    <main>
-      <p>
-        <Link to="/">← Beranda</Link> · <Link to="/jual">Kasir</Link>
-      </p>
+    <main className="page">
       <h1>Shift</h1>
       {error && <p role="alert">{error}</p>}
       {notice && <p role="status">{notice}</p>}
-      {current === undefined && !error && <p>Loading…</p>}
-      {current === null && <CashForm label="Modal awal di laci" submitLabel="Buka shift" onSubmit={open} />}
+      {current === undefined && !error && <p>Memuat…</p>}
+      {current === null && (
+        <section className="card" aria-label="Buka shift">
+          <p>Belum ada shift yang dibuka. Hitung modal awal di laci.</p>
+          <CashForm label="Modal awal di laci" submitLabel="Buka shift" onSubmit={open} />
+        </section>
+      )}
       {current && (
-        <>
-          <p>
-            Shift dibuka {time.format(new Date(current.openedAt))} dengan modal {rupiah.format(current.openingCash)}.
+        <section className="card" aria-label="Tutup shift">
+          <p className="board">
+            Shift dibuka {time.format(new Date(current.openedAt))} dengan modal {rupiah.format(current.openingCash)}
           </p>
           <CashForm label="Uang tunai di laci" submitLabel="Tutup shift" onSubmit={close} />
-        </>
+        </section>
       )}
       {closed && <ShiftTable shifts={[closed]} />}
       {all && (
-        <section aria-labelledby="all-shifts">
+        <section className="card" aria-labelledby="all-shifts">
           <h2 id="all-shifts">Semua shift</h2>
           {all.length === 0 ? <p>Belum ada shift.</p> : <ShiftTable shifts={all} />}
         </section>

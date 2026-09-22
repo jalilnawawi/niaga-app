@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router';
 import type { Me, Order } from '@niaga/shared';
 import { voidOrderSchema } from '@niaga/shared';
 import { errorMessage } from '../api/error-message';
@@ -35,29 +34,28 @@ export function OrdersPage({ me }: Props) {
   const paid = orders?.filter((o) => o.status === 'paid') ?? [];
 
   return (
-    <main>
-      <p>
-        <Link to="/">← Beranda</Link> · <Link to="/jual">Kasir</Link>
-      </p>
+    <main className="page">
       <h1>Transaksi hari ini</h1>
       {error && <p role="alert">{error}</p>}
       {notice && <p role="status">{notice}</p>}
-      {orders === null && !error && <p>Loading…</p>}
+      {orders === null && !error && <p>Memuat…</p>}
       {orders?.length === 0 && <p>Belum ada transaksi hari ini.</p>}
       {orders && orders.length > 0 && (
         <>
-          <p>
+          <p className="board">
             {paid.length} transaksi lunas · {rupiah.format(paid.reduce((sum, o) => sum + o.total, 0))}
           </p>
-          <OrderList orders={orders} onShow={setShown} onVoid={me.role === 'owner' ? voidIt : undefined} />
-        </>
-      )}
-      {shown && (
-        <>
-          <Receipt order={shown} tenantName={me.tenant.name} />
-          <button type="button" onClick={() => window.print()}>
-            Cetak struk
-          </button>
+          <div className="split">
+            <OrderList orders={orders} onShow={setShown} onVoid={me.role === 'owner' ? voidIt : undefined} />
+            {shown && (
+              <div className="card">
+                <Receipt order={shown} tenantName={me.tenant.name} />
+                <button type="button" className="primary" onClick={() => window.print()}>
+                  Cetak struk
+                </button>
+              </div>
+            )}
+          </div>
         </>
       )}
     </main>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router';
 import type { Category, CreateProduct, Product } from '@niaga/shared';
 import { categorySchema, createProductSchema, updateProductSchema } from '@niaga/shared';
 import * as catalogApi from '../api/catalog.api';
@@ -63,18 +62,15 @@ export function CatalogPage() {
     );
 
   return (
-    <main>
-      <p>
-        <Link to="/">← Beranda</Link>
-      </p>
+    <main className="page">
       <h1>Katalog</h1>
       {error && <p role="alert">{error}</p>}
       {notice && <p role="status">{notice}</p>}
-      {(categories === null || products === null) && !error && <p>Loading…</p>}
+      {(categories === null || products === null) && !error && <p>Memuat…</p>}
       {categories && products && (
-        <>
+        <div className="split side-first">
           <CategoryList categories={categories} onCreate={createCategory} onRename={renameCategory} onDelete={deleteCategory} />
-          <section aria-labelledby="products-heading">
+          <section className="card" aria-labelledby="products-heading">
             <h2 id="products-heading">Produk</h2>
             {editing ? (
               <ProductForm
@@ -88,12 +84,12 @@ export function CatalogPage() {
               <ProductForm categories={categories} onSubmit={createProduct} />
             )}
             {products.length === 0 ? (
-              <p>Belum ada produk.</p>
+              <p>Belum ada produk. Tambahkan produk pertama di formulir di atas.</p>
             ) : (
               <ProductTable products={products} categories={categories} onEdit={setEditing} onToggleActive={toggleActive} />
             )}
           </section>
-        </>
+        </div>
       )}
     </main>
   );
