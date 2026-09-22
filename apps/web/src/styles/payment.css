@@ -1,12 +1,16 @@
 /* /jual payment step: total board, method tabs, quick-cash, change, pay button. */
+/* Wraps so a 7-digit total at 44px never overflows the 360px cart column. */
 .total-board {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
+  column-gap: 12px;
 }
 
 .total-board strong {
-  font-size: 32px;
+  font-size: 44px;
+  line-height: 1.1;
 }
 
 /* Tunai / QRIS as two big segments. The radio stays in the tab order. */
