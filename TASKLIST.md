@@ -94,7 +94,7 @@ Web belum punya CSS sama sekali; satu-satunya CSS adalah aturan print struk di `
 - [x] Terapkan per halaman, urut: Jual, Shift, Riwayat, Katalog, Kasir, Laporan, Login, Beranda — `a374551`
 - [x] Aksesibilitas: fokus terlihat, kontras WCAG AA, target sentuh minimal 44px, `prefers-reduced-motion` dihormati — `a374551`
 - [x] Cek lebar 360px (HP) dan tablet lewat screenshot Chrome DevTools, tanpa scroll horizontal — `a374551`
-- [ ] Cek cetak struk di print preview
+- [x] Cek cetak struk di print preview: Riwayat dan Jual (HP) 1 halaman 58 mm, tanpa halaman kosong; ukuran kertas diatur di driver printer — `5369e13`
 - [x] `bun run lint && bun run typecheck && bun test` hijau — `a374551`
 
 ## 7. Persiapan deploy
