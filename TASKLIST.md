@@ -85,17 +85,17 @@ Web belum punya CSS sama sekali; satu-satunya CSS adalah aturan print struk di `
 
 ### 6c. Implementasi di `apps/web`
 
-- [x] Token sebagai CSS custom properties di `:root`, font, dan style dasar. CSS biasa, tanpa library UI atau CSS baru
-- [x] Cek Plus Jakarta Sans mendukung angka tabular (`tnum`) agar kolom rupiah rata: didukung (subset latin Google Fonts punya fitur `tnum`)
-- [x] Aturan styling ditambahkan ke CONVENTIONS.md: letak file CSS dan batas 200 baris juga berlaku untuk CSS
-- [x] Pindahkan print CSS struk dari `index.html` ke file CSS
-- [x] Shell aplikasi: navigasi per role (owner melihat Kasir, Katalog, Laporan; kasir tidak)
-- [x] Komponen `components/ui/` yang dipakai 2+ tempat saja: tombol dan field cukup class CSS (`primary`, `danger`, label bawaan), `DataTable` sudah ada
-- [x] Terapkan per halaman, urut: Jual, Shift, Riwayat, Katalog, Kasir, Laporan, Login, Beranda
-- [x] Aksesibilitas: fokus terlihat, kontras WCAG AA, target sentuh minimal 44px, `prefers-reduced-motion` dihormati
-- [x] Cek lebar 360px (HP) dan tablet lewat screenshot Chrome DevTools, tanpa scroll horizontal
+- [x] Token sebagai CSS custom properties di `:root`, font, dan style dasar. CSS biasa, tanpa library UI atau CSS baru — `a374551`
+- [x] Cek Plus Jakarta Sans mendukung angka tabular (`tnum`) agar kolom rupiah rata: didukung (subset latin Google Fonts punya fitur `tnum`) — `a374551`
+- [x] Aturan styling ditambahkan ke CONVENTIONS.md: letak file CSS dan batas 200 baris juga berlaku untuk CSS — `a374551`
+- [x] Pindahkan print CSS struk dari `index.html` ke file CSS — `a374551`
+- [x] Shell aplikasi: navigasi per role (owner melihat Kasir, Katalog, Laporan; kasir tidak) — `a374551`
+- [x] Komponen `components/ui/` yang dipakai 2+ tempat saja: tombol dan field cukup class CSS (`primary`, `danger`, label bawaan), `DataTable` sudah ada — `a374551`
+- [x] Terapkan per halaman, urut: Jual, Shift, Riwayat, Katalog, Kasir, Laporan, Login, Beranda — `a374551`
+- [x] Aksesibilitas: fokus terlihat, kontras WCAG AA, target sentuh minimal 44px, `prefers-reduced-motion` dihormati — `a374551`
+- [x] Cek lebar 360px (HP) dan tablet lewat screenshot Chrome DevTools, tanpa scroll horizontal — `a374551`
 - [ ] Cek cetak struk di print preview
-- [x] `bun run lint && bun run typecheck && bun test` hijau
+- [x] `bun run lint && bun run typecheck && bun test` hijau — `a374551`
 
 ## 7. Persiapan deploy
 
