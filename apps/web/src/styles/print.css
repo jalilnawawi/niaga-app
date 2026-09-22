@@ -22,8 +22,10 @@
   border-bottom: 1px dashed #000;
 }
 
+/* Thermal paper has no ruling: drop the nota table lines. */
 .receipt td {
   padding: 4px 0;
+  border: 0;
   background: none;
 }
 
@@ -41,12 +43,6 @@
   font-weight: 800;
 }
 
-.receipt .receipt-void {
-  padding: 4px;
-  border: 2px solid #000;
-  font-weight: 800;
-  text-align: center;
-}
 
 /* window.print() prints only the receipt. */
 @media print {
@@ -77,5 +73,10 @@
     width: 58mm;
     padding: 2mm;
     border: 0;
+  }
+
+  .receipt .stamp {
+    color: #000;
+    animation: none;
   }
 }

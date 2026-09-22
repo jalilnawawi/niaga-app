@@ -29,7 +29,14 @@ export function Receipt({ order, tenantName }: Props) {
       </table>
       <p className="receipt-total">Total {rupiah.format(order.total)}</p>
       <p>{order.paymentMethod === 'cash' ? `Tunai ${rupiah.format(order.paid)} · Kembali ${rupiah.format(order.change)}` : 'QRIS'}</p>
-      {order.status === 'void' && <p className="receipt-void">VOID: {order.voidReason}</p>}
+      {order.status === 'void' ? (
+        <>
+          <p className="stamp void">Void</p>
+          <p>Alasan: {order.voidReason}</p>
+        </>
+      ) : (
+        <p className="stamp">Lunas</p>
+      )}
       <p>Terima kasih</p>
     </section>
   );

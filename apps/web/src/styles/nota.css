@@ -1,0 +1,64 @@
+/* The nota sheet on /jual: printed head, then one entry per line: name, then quantity and amount, on pale blue ruling. */
+.pos-cart header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: var(--double);
+}
+
+.pos-cart h2 {
+  font-size: 34px;
+}
+
+.cart-lines {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cart-lines li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 4px 12px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: var(--rule);
+  color: var(--karbon);
+  font-weight: 650;
+}
+
+.line-name {
+  grid-column: 1 / -1;
+}
+
+.cart-lines .cart-head {
+  padding: 0 0 6px;
+  border-bottom-color: var(--garis-tua);
+  color: var(--pudar);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+
+.stepper output {
+  min-width: 24px;
+  text-align: center;
+}
+
+.stepper button {
+  width: var(--touch);
+  min-height: 44px;
+  padding: 0;
+  border-color: var(--garis-tua);
+  font-size: 20px;
+}

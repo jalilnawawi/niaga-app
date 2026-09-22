@@ -1,31 +1,46 @@
-/* Tokens from .superdesign/design-system.md. Banknote colors live in pos.css only. */
+/* Buku nota: white stock, printed ink, carbon for anything written, pale blue ruling, stamp red for trouble. */
 :root {
-  --putih: #ffffff;
-  --abu: #eef2f1;
-  --tinta: #16302e;
-  --toska: #0b7a75;
-  --kuning: #ffc928;
-  --cabai: #c62828;
+  --kertas: #ffffff;
+  --tinta: #15172b;
+  --karbon: #3b3fa3;
+  --garis: #d7dcef;
+  --garis-tua: #8e98c7;
+  --cap: #c8302a;
 
-  --radius: 12px;
-  --border: 2px solid var(--abu);
+  /* Ink washes: the only fills besides karbon itself. */
+  --karbon-cuci: color-mix(in srgb, var(--karbon) 7%, var(--kertas));
+  --karbon-tua: color-mix(in srgb, var(--karbon) 82%, var(--tinta));
+  --pudar: color-mix(in srgb, var(--tinta) 68%, var(--kertas));
+
+  --radius: 4px;
+  --rule: 1px solid var(--garis);
+  --rule-tua: 1px solid var(--garis-tua);
+  --double: 3px double var(--tinta);
   --touch: 48px;
   --nav-h: 64px;
-  --rail-w: 104px;
+  --rail-w: 136px;
 
   color-scheme: light;
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-  font-weight: 500;
+  font-family: 'Archivo', system-ui, sans-serif;
+  font-weight: 450;
   font-size: 16px;
-  line-height: 1.4;
+  line-height: 1.45;
   color: var(--tinta);
-  background: var(--putih);
+  background: var(--kertas);
+  accent-color: var(--karbon);
+  caret-color: var(--karbon);
+  scrollbar-color: var(--garis-tua) transparent;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+::selection {
+  background: var(--karbon);
+  color: var(--kertas);
 }
 
 body {
@@ -40,22 +55,31 @@ p {
   margin: 0;
 }
 
-h1 {
-  font-size: 24px;
+/* Printed form heads: condensed and heavy. */
+h1,
+h2,
+.head {
+  font-stretch: 75%;
   font-weight: 800;
+  letter-spacing: -0.005em;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: 34px;
 }
 
 h2 {
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 24px;
 }
 
 a {
-  color: var(--toska);
-  font-weight: 700;
+  color: var(--karbon);
+  font-weight: 650;
+  text-underline-offset: 3px;
 }
 
-/* One focus style everywhere: tinta ring clears 3:1 on white, abu, and kuning. */
+/* One focus style everywhere: tinta ring clears 3:1 on white, washes, and karbon's neighbours. */
 :focus-visible {
   outline: 3px solid var(--tinta);
   outline-offset: 2px;
@@ -78,7 +102,7 @@ a {
 }
 
 .muted {
-  color: color-mix(in srgb, var(--tinta) 70%, var(--putih));
+  color: var(--pudar);
   font-size: 14px;
 }
 
@@ -96,24 +120,48 @@ a {
   gap: 4px;
 }
 
+/* A sheet of the nota book. Its heading sits on a printed rule. */
 .card {
   display: grid;
   gap: 16px;
   align-content: start;
-  padding: 16px;
-  border: var(--border);
+  padding: 20px;
+  border: var(--rule-tua);
   border-radius: var(--radius);
+  background: var(--kertas);
 }
 
-/* The kuning price board: the one loud element outside the payment step. */
+.card > h2 {
+  padding-bottom: 8px;
+  border-bottom: var(--double);
+}
+
+/* The total line of a nota: double rule above, written in karbon. */
 .board {
-  padding: 12px 16px;
-  border-radius: var(--radius);
-  background: var(--kuning);
-  color: var(--tinta);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 16px;
+  padding: 12px 0;
+  border-top: var(--double);
+  border-bottom: var(--rule-tua);
+  color: var(--karbon);
+  font-stretch: 75%;
   font-weight: 800;
-  font-size: 20px;
+  font-size: 24px;
   font-variant-numeric: tabular-nums;
+}
+
+/* A sheet's edge is already its top rule. */
+.card > .board:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.board .muted {
+  font-stretch: 100%;
+  font-weight: 450;
 }
 
 /* Main column plus a fixed side column on tablet; stacked on phone. */
@@ -125,7 +173,7 @@ a {
 
 @media (min-width: 900px) {
   .page {
-    padding: 32px;
+    padding: 36px 40px;
   }
 
   .split {

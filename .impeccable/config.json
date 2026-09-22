@@ -8,6 +8,12 @@
         "value": "plus jakarta sans",
         "createdAt": "2026-09-22T07:52:41.887Z",
         "reason": "Chosen in phase 6a design brief (TASKLIST.md 6a, .superdesign/design-system.md): font made for Jakarta's city identity"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#000",
+        "createdAt": "2026-09-22T10:37:31.737Z",
+        "reason": "Receipt prints black on thermal paper; documented as the one raw hex in DESIGN.md Do's (receipt black in print.css)"
       }
     ]
   }

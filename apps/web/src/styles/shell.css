@@ -9,8 +9,8 @@
   inset: auto 0 0 0;
   z-index: 10;
   display: flex;
-  background: var(--putih);
-  border-top: 2px solid var(--tinta);
+  background: var(--kertas);
+  border-top: 1.5px solid var(--tinta);
 }
 
 .nav-brand,
@@ -32,6 +32,7 @@
   flex: 1;
 }
 
+/* Active page: karbon ink with a carbon rule on its edge (inset, not depth). */
 .nav a {
   display: flex;
   align-items: center;
@@ -40,11 +41,14 @@
   color: var(--tinta);
   text-decoration: none;
   font-size: 14px;
+  font-weight: 600;
 }
 
 .nav a[aria-current='page'] {
-  background: var(--toska);
-  color: var(--putih);
+  color: var(--karbon);
+  font-weight: 800;
+  box-shadow: inset 0 3px 0 var(--karbon);
+  background: var(--karbon-cuci);
 }
 
 @media (min-width: 900px) {
@@ -56,10 +60,10 @@
     inset: 0 auto 0 0;
     width: var(--rail-w);
     flex-direction: column;
-    gap: 16px;
-    padding: 16px 8px;
+    gap: 12px;
+    padding: 20px 10px;
     border-top: 0;
-    border-right: 2px solid var(--abu);
+    border-right: var(--rule-tua);
   }
 
   .nav-brand,
@@ -72,121 +76,84 @@
     display: flex;
   }
 
+  .nav-brand {
+    padding: 0 8px 12px;
+    border-bottom: var(--double);
+    font-stretch: 75%;
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 1;
+  }
+
   .nav-group {
-    margin-top: 8px;
-    padding: 0 8px;
-    font-size: 14px;
-    color: color-mix(in srgb, var(--tinta) 70%, var(--putih));
+    margin-top: 12px;
+    padding: 12px 8px 0;
+    border-top: var(--rule);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--pudar);
   }
 
   /* Owner pages sit right under their group label. */
   .nav-group + ul {
-    margin-top: -12px;
-  }
-
-  .shell .phone-only {
-    display: none;
-  }
-
-  .nav-brand {
-    font-weight: 800;
-    font-size: 20px;
-    color: var(--toska);
+    margin-top: -8px;
   }
 
   .nav ul {
     flex: none;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
   }
 
   .nav a {
+    justify-content: flex-start;
     height: var(--touch);
+    padding: 0 10px;
     border-radius: var(--radius);
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  .nav a[aria-current='page'] {
+    background: var(--karbon);
+    color: var(--kertas);
+    box-shadow: none;
   }
 
   .nav-user {
     margin-top: auto;
+    padding: 12px 8px 0;
+    border-top: var(--rule);
     font-size: 14px;
     overflow-wrap: anywhere;
   }
 
   .nav-user button {
     min-height: var(--touch);
-    padding: 0;
+  }
+
+  .shell .phone-only {
+    display: none;
   }
 }
 
-/* Beranda tiles. */
-.tiles {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 12px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.tiles a {
-  display: grid;
-  gap: 4px;
-  min-height: 96px;
-  padding: 16px;
-  border: var(--border);
-  border-radius: var(--radius);
-  color: var(--tinta);
-  text-decoration: none;
-  font-size: 20px;
-}
-
-.tiles a span {
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.tiles a.primary {
-  border-color: var(--toska);
-  background: var(--toska);
-  color: var(--putih);
-}
-
-/* Beranda status board: the one kuning element on the page, next action on its right. */
-.today {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px 24px;
-}
-
-.today-sales {
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.account {
-  display: grid;
-  justify-items: start;
-  gap: 8px;
-}
-
-/* Login and signup: one centred card on abu. */
+/* Login and signup: one nota sheet on ruled paper. */
 .auth {
   display: grid;
   place-items: center;
   min-height: 100dvh;
   padding: 16px;
-  background: var(--abu);
+  background: repeating-linear-gradient(var(--kertas) 0 31px, var(--garis) 31px 32px);
 }
 
 .auth > .card {
   width: 100%;
   max-width: 440px;
-  background: var(--putih);
+  padding: 28px;
+  border-color: var(--tinta);
 }
 
 .wordmark {
-  font-size: 32px;
-  font-weight: 800;
-  color: var(--toska);
+  font-size: 48px;
+  font-weight: 900;
 }

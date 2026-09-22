@@ -27,7 +27,7 @@ export function LoginPage({ onLoggedIn }: Props) {
       <div className="card">
         <header className="page-head">
           <h1 className="wordmark">Niaga</h1>
-          <p className="muted">Kasir untuk stand kaki lima</p>
+          <p className="muted">Kasir untuk stand food court</p>
         </header>
         <AuthForm mode={mode} error={error} onSubmit={submit} onToggleMode={() => setMode(mode === 'login' ? 'signup' : 'login')} />
       </div>

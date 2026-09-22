@@ -5,12 +5,7 @@ import { rupiah } from '../ui/rupiah';
 
 type Props = { total: number; onPay: (payment: CreateOrder['payment']) => Promise<boolean> };
 
-const notes = [
-  { value: 100_000, className: 'rp100' },
-  { value: 50_000, className: 'rp50' },
-  { value: 20_000, className: 'rp20' },
-  { value: 10_000, className: 'rp10' },
-];
+const notes = [100_000, 50_000, 20_000, 10_000];
 
 export function PaymentForm({ total, onPay }: Props) {
   const [method, setMethod] = useState<'cash' | 'qris'>('cash');
@@ -46,8 +41,8 @@ export function PaymentForm({ total, onPay }: Props) {
         <>
           <div className="quick-cash" role="group" aria-label="Uang cepat">
             {notes.map((n) => (
-              <button key={n.value} type="button" className={n.className} disabled={n.value < total} onClick={() => setPaid(String(n.value))}>
-                {rupiah.format(n.value)}
+              <button key={n} type="button" disabled={n < total} onClick={() => setPaid(String(n))}>
+                {rupiah.format(n)}
               </button>
             ))}
             <button type="button" className="exact" onClick={() => setPaid(String(total))}>

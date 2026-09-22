@@ -28,7 +28,15 @@ export function OrderList({ orders, onShow, onVoid }: Props) {
               <td>{o.cashierName}</td>
               <td>{o.paymentMethod === 'cash' ? 'Tunai' : 'QRIS'}</td>
               <td className="num">{o.status === 'void' ? <s>{rupiah.format(o.total)}</s> : rupiah.format(o.total)}</td>
-              <td className={o.status === 'void' ? 'bad' : undefined}>{o.status === 'void' ? `Void: ${o.voidReason}` : 'Lunas'}</td>
+              <td>
+                {o.status === 'void' ? (
+                  <>
+                    <span className="stamp void">Void</span> <span className="muted">{o.voidReason}</span>
+                  </>
+                ) : (
+                  <span className="stamp">Lunas</span>
+                )}
+              </td>
               <td className="actions">
                 <button type="button" onClick={() => onShow(o)}>
                   Struk

@@ -1,4 +1,4 @@
-/* Buttons: secondary by default, .primary for the next tap, .danger for void/delete. */
+/* Buttons: secondary by default, .primary (karbon) for the next tap, .danger for void/delete. */
 button,
 .button {
   display: inline-flex;
@@ -6,33 +6,54 @@ button,
   justify-content: center;
   gap: 8px;
   min-height: var(--touch);
-  padding: 8px 16px;
-  border: 2px solid var(--tinta);
+  padding: 8px 18px;
+  border: 1.5px solid var(--tinta);
   border-radius: var(--radius);
-  background: var(--putih);
+  background: var(--kertas);
   color: var(--tinta);
   font: inherit;
-  font-weight: 700;
+  font-weight: 650;
   text-decoration: none;
   cursor: pointer;
+  transition: background-color 120ms ease-out;
+}
+
+button:hover,
+.button:hover {
+  background: var(--karbon-cuci);
+}
+
+button:active:not(:disabled),
+.button:active {
+  transform: translateY(1px);
 }
 
 button.primary,
 .button.primary {
-  border-color: var(--toska);
-  background: var(--toska);
-  color: var(--putih);
+  border-color: var(--karbon);
+  background: var(--karbon);
+  color: var(--kertas);
+}
+
+button.primary:hover,
+.button.primary:hover {
+  border-color: var(--karbon-tua);
+  background: var(--karbon-tua);
 }
 
 button.danger {
-  border-color: var(--cabai);
-  color: var(--cabai);
+  border-color: var(--cap);
+  color: var(--cap);
 }
 
 button.link {
+  min-height: 0;
+  padding: 4px 0;
   border-color: transparent;
   background: none;
-  color: var(--toska);
+  color: var(--karbon);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 button:disabled {
@@ -42,8 +63,10 @@ button:disabled {
 
 .big {
   min-height: 64px;
-  font-size: 20px;
   width: 100%;
+  font-size: 20px;
+  font-stretch: 87.5%;
+  font-weight: 800;
 }
 
 /* Forms: a wrapping row of labelled fields; .stack puts them in one column. */
@@ -54,29 +77,43 @@ form {
   align-items: end;
 }
 
+/* A form that is also a sheet keeps the form's row flow; loose buttons in a sheet keep their width. */
+form.card {
+  display: flex;
+}
+
+.card > button,
+.card > .button {
+  justify-self: start;
+}
+
 form.stack {
   flex-direction: column;
   align-items: stretch;
 }
 
-label {
+label,
+legend {
   display: grid;
   gap: 4px;
-  font-weight: 700;
+  font-weight: 650;
   font-size: 14px;
 }
 
+/* Fill-in blanks of a printed form: a carbon wash above a ruled line, and what you write is carbon. */
 input,
 select {
   min-height: var(--touch);
   min-width: 0;
   padding: 8px 12px;
-  border: 2px solid var(--tinta);
-  border-radius: var(--radius);
-  background: var(--putih);
-  color: var(--tinta);
+  border: 0;
+  border-bottom: 2px solid var(--tinta);
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--karbon-cuci);
+  color: var(--karbon);
   font: inherit;
   font-size: 16px;
+  font-weight: 600;
 }
 
 input[type='number'] {
@@ -90,26 +127,23 @@ fieldset {
 }
 
 legend {
-  font-weight: 700;
-  font-size: 14px;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  padding: 0;
 }
 
 /* Messages always carry text; color only backs it up. */
 [role='alert'],
 [role='status'] {
   padding: 12px 16px;
-  border: 2px solid var(--cabai);
+  border: 1.5px solid var(--cap);
   border-radius: var(--radius);
-  font-weight: 700;
-}
-
-[role='alert'] {
-  color: var(--cabai);
+  color: var(--cap);
+  font-weight: 650;
 }
 
 [role='status'] {
-  border-color: var(--toska);
+  border-color: var(--karbon);
+  color: var(--karbon);
 }
 
 [role='alert'] a,
@@ -117,59 +151,8 @@ legend {
   margin-top: 8px;
 }
 
-/* Tables: flat, square, abu stripes; wrapper scrolls so the page never does. */
-.table-wrap {
-  overflow-x: auto;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-  font-weight: 800;
-  font-size: 20px;
-  padding-bottom: 8px;
-}
-
-th,
-td {
-  padding: 8px 12px;
-  text-align: left;
-  vertical-align: middle;
-}
-
-th {
-  border-bottom: 2px solid var(--tinta);
-  font-size: 14px;
-}
-
-tbody tr:nth-child(even) {
-  background: var(--abu);
-}
-
-tr.off {
-  color: color-mix(in srgb, var(--tinta) 60%, var(--putih));
-}
-
-/* Stays a table cell (flex here would break row layout); gaps via margin. */
-td.actions {
-  white-space: nowrap;
-}
-
-td.actions > * + * {
-  margin-left: 8px;
-}
-
-td.actions > form {
-  margin: 8px 0 0;
-  white-space: normal;
-}
-
 .bad {
-  color: var(--cabai);
+  color: var(--cap);
   font-weight: 700;
 }
 

@@ -1,12 +1,12 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-22T09:59:02.988Z",
+  "generatedAt": "2026-09-22T10:37:40.283Z",
   "title": "Design System: Niaga",
   "extensions": {
     "colorMeta": {
-      "putih": {
+      "kertas": {
         "role": "neutral",
-        "displayName": "Putih Kertas",
+        "displayName": "Kertas Nota",
         "canonical": "#ffffff",
         "tonalRamp": [
           "#666666",
@@ -19,162 +19,110 @@
           "#ffffff"
         ]
       },
-      "abu": {
-        "role": "neutral",
-        "displayName": "Abu Etalase",
-        "canonical": "#eef2f1",
-        "tonalRamp": [
-          "#5f6160",
-          "#8f9191",
-          "#bec2c1",
-          "#eef2f1",
-          "#f2f5f5",
-          "#f7f9f8",
-          "#fbfcfc",
-          "#fdfefe"
-        ]
-      },
       "tinta": {
         "role": "neutral",
-        "displayName": "Tinta Hijau Gelap",
-        "canonical": "#16302e",
+        "displayName": "Tinta Cetak",
+        "canonical": "#15172b",
         "tonalRamp": [
-          "#091312",
-          "#0d1d1c",
-          "#122625",
-          "#16302e",
-          "#506462",
-          "#8b9897",
-          "#c5cbcb",
-          "#e8eaea"
+          "#080911",
+          "#0d0e1a",
+          "#111222",
+          "#15172b",
+          "#505160",
+          "#8a8b95",
+          "#c5c5ca",
+          "#e8e8ea"
         ]
       },
-      "toska": {
+      "karbon": {
         "role": "primary",
-        "displayName": "Toska Cat Gerobak",
-        "canonical": "#0b7a75",
+        "displayName": "Karbon Rangkap",
+        "canonical": "#3b3fa3",
         "tonalRamp": [
-          "#04312f",
-          "#074946",
-          "#09625e",
-          "#0b7a75",
-          "#489b98",
-          "#85bdba",
-          "#c2dedd",
-          "#e7f2f1"
+          "#181941",
+          "#232662",
+          "#2f3282",
+          "#3b3fa3",
+          "#6c6fba",
+          "#9d9fd1",
+          "#cecfe8",
+          "#ebecf6"
         ]
       },
-      "kuning": {
-        "role": "secondary",
-        "displayName": "Kuning Papan Harga",
-        "canonical": "#ffc928",
+      "garis": {
+        "role": "neutral",
+        "displayName": "Garis Biru Pucat",
+        "canonical": "#d7dcef",
         "tonalRamp": [
-          "#665010",
-          "#997918",
-          "#cca120",
-          "#ffc928",
-          "#ffd75e",
-          "#ffe494",
-          "#fff2c9",
-          "#fffaea"
+          "#565860",
+          "#81848f",
+          "#acb0bf",
+          "#d7dcef",
+          "#e1e5f3",
+          "#ebeef7",
+          "#f5f6fb",
+          "#fbfcfd"
         ]
       },
-      "cabai": {
+      "garis-tua": {
+        "role": "neutral",
+        "displayName": "Garis Biru Tua",
+        "canonical": "#8e98c7",
+        "tonalRamp": [
+          "#393d50",
+          "#555b77",
+          "#727a9f",
+          "#8e98c7",
+          "#aab2d5",
+          "#c7cce3",
+          "#e3e5f1",
+          "#f4f5f9"
+        ]
+      },
+      "cap": {
         "role": "tertiary",
-        "displayName": "Merah Cabai",
-        "canonical": "#c62828",
+        "displayName": "Merah Cap",
+        "canonical": "#c8302a",
         "tonalRamp": [
-          "#4f1010",
-          "#771818",
-          "#9e2020",
-          "#c62828",
-          "#d45e5e",
-          "#e39494",
-          "#f1c9c9",
-          "#f9eaea"
-        ]
-      },
-      "rp100": {
-        "role": "banknote",
-        "displayName": "Merah Muda Seratus Ribu",
-        "canonical": "#c2185b",
-        "tonalRamp": [
-          "#4e0a24",
-          "#740e37",
-          "#9b1349",
-          "#c2185b",
-          "#d15284",
-          "#e18cad",
-          "#f0c5d6",
-          "#f9e8ef"
-        ]
-      },
-      "rp50": {
-        "role": "banknote",
-        "displayName": "Biru Lima Puluh Ribu",
-        "canonical": "#1f5fae",
-        "tonalRamp": [
-          "#0c2646",
-          "#133968",
-          "#194c8b",
-          "#1f5fae",
-          "#5787c2",
-          "#8fafd7",
-          "#c7d7eb",
-          "#e9eff7"
-        ]
-      },
-      "rp20": {
-        "role": "banknote",
-        "displayName": "Hijau Dua Puluh Ribu",
-        "canonical": "#23784a",
-        "tonalRamp": [
-          "#0e301e",
-          "#15482c",
-          "#1c603b",
-          "#23784a",
-          "#5a9a77",
-          "#91bca5",
-          "#c8ddd2",
-          "#e9f2ed"
-        ]
-      },
-      "rp10": {
-        "role": "banknote",
-        "displayName": "Ungu Sepuluh Ribu",
-        "canonical": "#7b3fa0",
-        "tonalRamp": [
-          "#311940",
-          "#4a2660",
-          "#623280",
-          "#7b3fa0",
-          "#9c6fb8",
-          "#bd9fd0",
-          "#decfe7",
-          "#f2ecf6"
+          "#501311",
+          "#781d19",
+          "#a02622",
+          "#c8302a",
+          "#d6645f",
+          "#e49895",
+          "#f1cbca",
+          "#faeaea"
         ]
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Total di papan bayar dan wordmark login."
+        "purpose": "Total bayar dan wordmark login."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Judul halaman (h1)."
+        "purpose": "Judul halaman dan kepala Nota."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Judul bagian, papan total, bar keranjang, tombol besar."
+        "purpose": "Judul bagian, baris total, strip nota, uang cepat."
+      },
+      "entry": {
+        "displayName": "Entry",
+        "purpose": "Nama produk di daftar harga, tombol besar."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Teks umum, input, harga di tile."
+        "purpose": "Teks dan isian."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Label field, header tabel, nav, meta."
+        "purpose": "Label field, kepala tabel, nav."
+      },
+      "stamp": {
+        "displayName": "Cap",
+        "purpose": "Status LUNAS dan VOID."
       },
       "receipt": {
         "displayName": "Struk",
@@ -182,7 +130,13 @@
       }
     },
     "shadows": [],
-    "motion": [],
+    "motion": [
+      {
+        "name": "stamp-land",
+        "value": "220ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Cap LUNAS jatuh sekali di struk baru."
+      }
+    ],
     "breakpoints": [
       {
         "name": "tablet",
@@ -192,135 +146,133 @@
   },
   "components": [
     {
-      "name": "Tombol Sekunder",
+      "name": "Tombol",
       "kind": "button",
       "refersTo": "button",
-      "description": "Tombol default: putih, border tinta.",
-      "html": "<button class=\"ds-btn\">Batal</button>",
-      "css": ".ds-btn { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 8px 16px; border: 2px solid var(--tinta, #16302e); border-radius: 12px; background: var(--putih, #fff); color: var(--tinta, #16302e); font-size: 16px; font-weight: 700; cursor: pointer; } .ds-btn:hover { background: var(--abu, #eef2f1); } .ds-btn:focus-visible { outline: 3px solid var(--tinta, #16302e); outline-offset: 2px; }"
+      "description": "Default: kertas, border tinta.",
+      "html": "<button class=\"ds-btn\">Struk</button>",
+      "css": ".ds-btn { font-family: 'Archivo', system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 8px 18px; border: 1.5px solid var(--tinta, #15172b); border-radius: 4px; background: var(--kertas, #fff); color: var(--tinta, #15172b); font-size: 16px; font-weight: 650; cursor: pointer; transition: background-color 120ms ease-out; } .ds-btn:hover { background: color-mix(in srgb, var(--karbon, #3b3fa3) 7%, #fff); } .ds-btn:focus-visible { outline: 3px solid var(--tinta, #15172b); outline-offset: 2px; }"
     },
     {
       "name": "Tombol Primary",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Tap berikutnya: toska penuh.",
-      "html": "<button class=\"ds-btn-primary\">Simpan</button>",
-      "css": ".ds-btn-primary { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 8px 16px; border: 2px solid var(--tinta, #16302e); border-radius: 12px; background: var(--putih, #fff); color: var(--tinta, #16302e); font-size: 16px; font-weight: 700; cursor: pointer; border-color: var(--toska, #0b7a75); background: var(--toska, #0b7a75); color: var(--putih, #fff); } .ds-btn-primary:focus-visible { outline: 3px solid var(--tinta, #16302e); outline-offset: 2px; }"
+      "description": "Tap berikutnya: karbon penuh.",
+      "html": "<button class=\"ds-btn-primary\">Mulai jual</button>",
+      "css": ".ds-btn-primary { font-family: 'Archivo', system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 8px 18px; border: 1.5px solid var(--tinta, #15172b); border-radius: 4px; background: var(--kertas, #fff); color: var(--tinta, #15172b); font-size: 16px; font-weight: 650; cursor: pointer; transition: background-color 120ms ease-out; border-color: var(--karbon, #3b3fa3); background: var(--karbon, #3b3fa3); color: #fff; } .ds-btn-primary:focus-visible { outline: 3px solid var(--tinta, #15172b); outline-offset: 2px; }"
     },
     {
       "name": "Tombol Danger",
       "kind": "button",
       "refersTo": "button-danger",
-      "description": "Void dan hapus: border dan teks cabai, selalu dengan label.",
+      "description": "Void dan hapus.",
       "html": "<button class=\"ds-btn-danger\">Void</button>",
-      "css": ".ds-btn-danger { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 8px 16px; border: 2px solid var(--tinta, #16302e); border-radius: 12px; background: var(--putih, #fff); color: var(--tinta, #16302e); font-size: 16px; font-weight: 700; cursor: pointer; border-color: var(--cabai, #c62828); color: var(--cabai, #c62828); } .ds-btn-danger:focus-visible { outline: 3px solid var(--tinta, #16302e); outline-offset: 2px; }"
+      "css": ".ds-btn-danger { font-family: 'Archivo', system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 8px 18px; border: 1.5px solid var(--tinta, #15172b); border-radius: 4px; background: var(--kertas, #fff); color: var(--tinta, #15172b); font-size: 16px; font-weight: 650; cursor: pointer; transition: background-color 120ms ease-out; border-color: var(--cap, #c8302a); color: var(--cap, #c8302a); } .ds-btn-danger:focus-visible { outline: 3px solid var(--tinta, #15172b); outline-offset: 2px; }"
     },
     {
-      "name": "Tombol Bayar",
-      "kind": "button",
-      "refersTo": "button-big",
-      "description": "Aksi utama langkah bayar: 64px, lebar penuh.",
-      "html": "<button class=\"ds-btn-big\">Bayar Rp45.000</button>",
-      "css": ".ds-btn-big { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 8px 16px; border: 2px solid var(--tinta, #16302e); border-radius: 12px; background: var(--putih, #fff); color: var(--tinta, #16302e); font-size: 16px; font-weight: 700; cursor: pointer; width: 100%; min-height: 64px; font-size: 20px; border-color: var(--toska, #0b7a75); background: var(--toska, #0b7a75); color: var(--putih, #fff); } .ds-btn-big:focus-visible { outline: 3px solid var(--tinta, #16302e); outline-offset: 2px; }"
-    },
-    {
-      "name": "Field",
+      "name": "Isian",
       "kind": "input",
       "refersTo": "input",
-      "description": "Label di atas, border tinta, 48px.",
-      "html": "<label class=\"ds-field\">Nama produk<input class=\"ds-input\" value=\"Nasi goreng\"></label>",
-      "css": ".ds-field { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: grid; gap: 4px; font-size: 14px; font-weight: 700; color: var(--tinta, #16302e); } .ds-input { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; min-height: 48px; padding: 8px 12px; border: 2px solid var(--tinta, #16302e); border-radius: 12px; background: var(--putih, #fff); color: var(--tinta, #16302e); font-size: 16px; font-weight: 500; } .ds-input:focus-visible { outline: 3px solid var(--tinta, #16302e); outline-offset: 2px; }"
+      "description": "Titik-titik formulir; isi ditulis karbon.",
+      "html": "<label class=\"ds-field\">Uang diterima (Rp)<input class=\"ds-input\" value=\"100000\"></label>",
+      "css": ".ds-field { font-family: 'Archivo', system-ui, sans-serif; display: grid; gap: 4px; font-size: 14px; font-weight: 650; color: var(--tinta, #15172b); } .ds-input { font-family: 'Archivo', system-ui, sans-serif; min-height: 48px; padding: 8px 12px; border: 0; border-bottom: 2px solid var(--tinta, #15172b); border-radius: 4px 4px 0 0; background: color-mix(in srgb, var(--karbon, #3b3fa3) 7%, #fff); color: var(--karbon, #3b3fa3); font-size: 16px; font-weight: 600; } .ds-input:focus-visible { outline: 3px solid var(--tinta, #15172b); outline-offset: 2px; }"
     },
     {
-      "name": "Navigasi Bawah",
+      "name": "Nav Bawah",
       "kind": "nav",
       "refersTo": "nav-item-active",
-      "description": "Bar bawah HP; item aktif blok toska.",
-      "html": "<nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">Jual</a><a href=\"#\">Riwayat</a><a href=\"#\">Shift</a><a href=\"#\">Lainnya</a></nav>",
-      "css": ".ds-nav { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: flex; border-top: 2px solid var(--tinta, #16302e); background: var(--putih, #fff); } .ds-nav a { flex: 1; display: flex; align-items: center; justify-content: center; height: 64px; color: var(--tinta, #16302e); text-decoration: none; font-size: 14px; font-weight: 700; } .ds-nav a[aria-current='page'] { background: var(--toska, #0b7a75); color: var(--putih, #fff); } .ds-nav a:focus-visible { outline: 3px solid var(--tinta, #16302e); outline-offset: 2px; }"
+      "description": "HP; item aktif karbon dengan garis atas.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Beranda</a><a href=\"#\" aria-current=\"page\">Jual</a><a href=\"#\">Riwayat</a><a href=\"#\">Shift</a></nav>",
+      "css": ".ds-nav { font-family: 'Archivo', system-ui, sans-serif; display: flex; border-top: 1.5px solid var(--tinta, #15172b); background: #fff; } .ds-nav a { flex: 1; display: flex; align-items: center; justify-content: center; height: 64px; color: var(--tinta, #15172b); text-decoration: none; font-size: 14px; font-weight: 600; } .ds-nav a[aria-current='page'] { color: var(--karbon, #3b3fa3); font-weight: 800; box-shadow: inset 0 3px 0 var(--karbon, #3b3fa3); background: color-mix(in srgb, var(--karbon, #3b3fa3) 7%, #fff); } .ds-nav a:focus-visible { outline: 3px solid var(--tinta, #15172b); outline-offset: 2px; }"
     },
     {
-      "name": "Papan Harga",
+      "name": "Baris Total",
       "kind": "custom",
-      "refersTo": "price-board",
-      "description": "Papan total kuning, elemen keras di luar langkah bayar.",
-      "html": "<p class=\"ds-board\"><span>Total</span><strong>Rp45.000</strong></p>",
-      "css": ".ds-board { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: flex; justify-content: space-between; align-items: baseline; margin: 0; padding: 12px 16px; border-radius: 12px; background: var(--kuning, #ffc928); color: var(--tinta, #16302e); font-size: 20px; font-weight: 800; font-variant-numeric: tabular-nums; } .ds-board strong { font-size: 44px; line-height: 1.1; }"
+      "refersTo": "nota-strip",
+      "description": "Garis ganda di atas, total karbon.",
+      "html": "<p class=\"ds-board\"><span>Total</span><strong>Rp 135.000</strong></p>",
+      "css": ".ds-board { font-family: 'Archivo', system-ui, sans-serif; font-stretch: 75%; font-weight: 800; display: flex; justify-content: space-between; align-items: baseline; margin: 0; padding: 12px 0; border-top: 3px double var(--tinta, #15172b); border-bottom: 1px solid var(--garis-tua, #8e98c7); color: var(--karbon, #3b3fa3); font-size: 24px; font-variant-numeric: tabular-nums; } .ds-board strong { font-size: 48px; line-height: 1; }"
     },
     {
-      "name": "Tile Produk",
+      "name": "Sel Daftar Harga",
       "kind": "card",
-      "refersTo": "product-tile",
-      "description": "Tile grid /jual dengan badge jumlah.",
-      "html": "<button class=\"ds-tile\">Es teh manis<span class=\"ds-tile-price\">Rp5.000<b>2</b></span></button>",
-      "css": ".ds-tile { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: grid; align-content: space-between; justify-items: start; width: 180px; min-height: 96px; padding: 12px; border: 2px solid var(--abu, #eef2f1); border-radius: 12px; background: var(--putih, #fff); color: var(--tinta, #16302e); font-size: 20px; font-weight: 700; text-align: left; cursor: pointer; } .ds-tile:focus-visible { outline: 3px solid var(--tinta, #16302e); outline-offset: 2px; } .ds-tile-price { display: flex; justify-content: space-between; width: 100%; font-size: 16px; font-weight: 500; font-variant-numeric: tabular-nums; } .ds-tile-price b { min-width: 28px; padding: 0 8px; border-radius: 999px; background: var(--toska, #0b7a75); color: var(--putih, #fff); text-align: center; }"
+      "refersTo": "price-cell",
+      "description": "Sel bergaris; terpilih dengan cucian dan kotak jumlah karbon.",
+      "html": "<button class=\"ds-cell\">Mie ayam bakso<span>Rp 25.000<b>3</b></span></button>",
+      "css": ".ds-cell { font-family: 'Archivo', system-ui, sans-serif; display: grid; align-content: space-between; justify-items: start; width: 200px; min-height: 104px; padding: 14px; border: 1px solid var(--garis-tua, #8e98c7); border-radius: 0; background: color-mix(in srgb, var(--karbon, #3b3fa3) 7%, #fff); box-shadow: inset 0 0 0 2px var(--karbon, #3b3fa3); color: var(--tinta, #15172b); font-stretch: 87.5%; font-size: 20px; font-weight: 700; text-align: left; cursor: pointer; } .ds-cell:focus-visible { outline: 3px solid var(--tinta, #15172b); outline-offset: 2px; } .ds-cell span { display: flex; justify-content: space-between; width: 100%; font-stretch: 100%; font-size: 16px; font-weight: 500; color: #5f6070; font-variant-numeric: tabular-nums; } .ds-cell b { padding: 1px 8px; border: 2px solid var(--karbon, #3b3fa3); border-radius: 4px; color: var(--karbon, #3b3fa3); }"
     },
     {
-      "name": "Tombol Uang Cepat",
+      "name": "Uang Cepat",
       "kind": "custom",
-      "refersTo": "quick-cash-rp100",
-      "description": "Satu-satunya tempat warna uang kertas.",
-      "html": "<div class=\"ds-qc\"><button class=\"rp100\">Rp100.000</button><button class=\"rp50\">Rp50.000</button><button class=\"rp20\">Rp20.000</button><button class=\"rp10\">Rp10.000</button><button class=\"exact\">Uang pas</button></div>",
-      "css": ".ds-qc { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; } .ds-qc button { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; min-height: 64px; border: 0; border-radius: 12px; color: #fff; font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; cursor: pointer; } .ds-qc button:focus-visible { outline: 3px solid var(--tinta, #16302e); outline-offset: 2px; } .ds-qc .rp100 { background: #c2185b; } .ds-qc .rp50 { background: #1f5fae; } .ds-qc .rp20 { background: #23784a; } .ds-qc .rp10 { background: #7b3fa0; } .ds-qc .exact { grid-column: 1 / -1; border: 2px solid var(--tinta, #16302e); background: var(--abu, #eef2f1); color: var(--tinta, #16302e); }"
+      "refersTo": "quick-cash",
+      "description": "Nominal besar condensed; Uang pas putus-putus.",
+      "html": "<div class=\"ds-qc\"><button>Rp 100.000</button><button>Rp 50.000</button><button class=\"exact\">Uang pas</button></div>",
+      "css": ".ds-qc { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 340px; } .ds-qc button { font-family: 'Archivo', system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 8px 18px; border: 1.5px solid var(--tinta, #15172b); border-radius: 4px; background: var(--kertas, #fff); color: var(--tinta, #15172b); font-size: 16px; font-weight: 650; cursor: pointer; transition: background-color 120ms ease-out; font-stretch: 75%; font-weight: 800; min-height: 56px; font-size: 24px; font-variant-numeric: tabular-nums; } .ds-qc button:focus-visible { outline: 3px solid var(--tinta, #15172b); outline-offset: 2px; } .ds-qc .exact { grid-column: 1 / -1; border: 1.5px dashed var(--karbon, #3b3fa3); color: var(--karbon, #3b3fa3); font-size: 20px; }"
+    },
+    {
+      "name": "Cap",
+      "kind": "chip",
+      "refersTo": "stamp-lunas",
+      "description": "Status sebagai cap karet.",
+      "html": "<span class=\"ds-stamp\">Lunas</span> <span class=\"ds-stamp void\">Void</span>",
+      "css": ".ds-stamp { font-family: 'Archivo', system-ui, sans-serif; display: inline-block; padding: 2px 10px; border: 3px double currentColor; border-radius: 4px; color: var(--karbon, #3b3fa3); font-stretch: 75%; font-weight: 900; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; transform: rotate(-4deg); } .ds-stamp.void { color: var(--cap, #c8302a); }"
     }
   ],
   "narrative": {
-    "northStar": "Papan Harga Gerobak",
-    "overview": "Setiap elemen penting terbaca seperti papan harga yang dicat di gerobak: besar, datar, dan tegas, dengan satu label jelas. Rangka warnanya dari cat gerobak, yaitu badan toska, papan harga kuning, dan huruf merah cabai di atas putih. Warnanya rata dan kontrasnya tinggi supaya terbaca di layar terang, dengan antrean yang sedang menunggu.\n\nKepadatan rendah. Tap berikutnya selalu jadi elemen terbesar di layar. Tiap layar hanya punya satu elemen yang keras: di langkah bayar itu barisan tombol uang cepat, di tempat lain papan total kuning. Sisanya tenang: putih, garis 2px, teks tinta.\n\nWarna uang kertas rupiah hanya muncul di tombol uang cepat. Kasir mengenali pecahan dari warnanya tanpa membaca, dan nominalnya tetap tertulis.",
+    "northStar": "Buku Nota",
+    "overview": "Setiap penjualan adalah satu lembar buku nota kontan: ditulis baris demi baris, dijumlah di bawah garis ganda, lalu dicap LUNAS. Semua yang tercetak di formulir memakai tinta gelap. Semua yang ditulis atau diisi, yaitu nama barang di nota, angka, isian field, dan pilihan aktif, memakai karbon biru-ungu seperti salinan rangkap.\n\nKepadatan rendah dan presisi tinggi. Garis tipis biru pucat membagi kolom dan baris seperti kertas nota bergaris. Judul formulir memakai Archivo condensed yang tebal, sehingga terasa tercetak dan matang, bukan kartu admin generik. Kesan premium datang dari ketepatan garis dan huruf, bukan dari efek.\n\nStatus berbicara lewat cap karet: LUNAS dalam karbon, VOID dalam merah. Cap LUNAS jatuh sekali di struk tepat setelah pembayaran; itulah satu-satunya momen gerak di aplikasi.",
     "keyCharacteristics": [
-      "Warna rata, tanpa gradien, tanpa bayangan dekoratif.",
-      "Pemisah dari isian warna dan border 2px, bukan dari bayangan.",
-      "Tombol dan tile besar: minimal 48px, tombol utama dan uang cepat 64px.",
-      "Angka rupiah selalu tabular dan rata kanan.",
-      "Satu elemen keras per layar."
+      "Dua tinta di atas kertas putih: karbon dan merah cap. Tanpa isian abu dekoratif.",
+      "Garis 1px biru pucat untuk ruling; garis ganda 3px tinta di atas setiap total dan di bawah setiap kepala tabel.",
+      "Sudut 4px. Tanpa bayangan, gradien, atau blur.",
+      "Judul condensed 800; angka uang tabular dan rata kanan di slot yang sama di mana pun.",
+      "Setiap kontrol punya label tertulis; tidak ada tombol ikon saja."
     ],
     "rules": [
       {
-        "name": "The Dompet Tertutup Rule",
-        "body": "Warna uang kertas tidak pernah keluar dari tombol uang cepat. Warna ini hardcoded di `payment.css` saja, bukan token `:root`.",
+        "name": "The Dua Tinta Rule",
+        "body": "Hanya karbon dan merah cap yang berwarna. Tidak ada warna ketiga, termasuk warna uang kertas.",
         "section": "colors"
       },
       {
-        "name": "The Cabai Bersuara Rule",
-        "body": "Status bahaya selalu punya teks (\"Kurang Rp5.000\", \"VOID\"), tidak pernah warna saja, karena `cabai` dan `rp100` sama-sama merah.",
+        "name": "The Tulisan Karbon Rule",
+        "body": "Yang dicetak memakai tinta; yang ditulis atau dipilih memakai karbon. Kalau ragu, tanya: apakah kasir yang mengisinya?",
         "section": "colors"
       },
       {
-        "name": "The Papan Kuning Rule",
-        "body": "Kuning adalah papan harga, bukan dekorasi. Pakai hanya untuk total, bar keranjang, dan papan status Beranda.",
+        "name": "The Cap Bersuara Rule",
+        "body": "Status selalu berupa kata di dalam cap (LUNAS, VOID, \"Kurang Rp5.000\"), tidak pernah warna saja.",
         "section": "colors"
       },
       {
-        "name": "The Angka Rapi Rule",
-        "body": "Semua angka rupiah memakai `tabular-nums`. Di tabel dan keranjang, angka rata kanan dan tidak pernah terputus baris.",
+        "name": "The Angka Satu Slot Rule",
+        "body": "Uang selalu `tabular-nums`, rata kanan, tidak terputus baris.",
         "section": "typography"
       },
       {
-        "name": "The Kalimat Biasa Rule",
-        "body": "Sentence case di mana pun. Tidak ada label huruf kapital semua dan tidak ada eyebrow di atas judul.",
+        "name": "The Kapital Hanya Cap Rule",
+        "body": "Sentence case di mana pun. Satu-satunya teks huruf kapital semua adalah cap karet.",
         "section": "typography"
       },
       {
-        "name": "The Cat Rata Rule",
-        "body": "Tidak ada bayangan, gradien, atau blur. Kalau perlu memisahkan, pakai border 2px atau isian warna.",
+        "name": "The Kertas Rata Rule",
+        "body": "Tidak ada bayangan, gradien, atau blur. Pemisah adalah garis.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "Do pakai token dari `:root` di `base.css` (`--toska`, `--kuning`, ...), tidak pernah hex mentah. Satu-satunya pengecualian: warna uang kertas di `payment.css` dan hitam struk di `print.css`.",
-      "Do buat tap berikutnya sebagai elemen terbesar: tombol primary, atau `.big` 64px di langkah bayar.",
-      "Do beri `className=\"num\"` pada sel uang (tabular, rata kanan, tanpa putus baris).",
-      "Do jaga target sentuh minimal 48px; tile produk 96px, tombol uang cepat 64px.",
-      "Do tulis status kosong, loading, dan error sebagai kalimat yang menyebut apa yang terjadi dan apa yang harus di-tap."
+      "Do pakai token `:root` di `base.css` (`--karbon`, `--garis`, ...). Satu-satunya hex mentah: hitam struk di `print.css`.",
+      "Do tulis yang diisi kasir dalam karbon dan yang tercetak dalam tinta.",
+      "Do taruh garis ganda di atas setiap total.",
+      "Do tampilkan status sebagai cap berisi kata.",
+      "Do jaga target sentuh: 48px umum (stepper 44px tinggi), sel harga 104px, uang cepat 56px, Bayar 64px."
     ],
     "donts": [
-      "Don't pakai warna uang kertas di luar tombol uang cepat.",
-      "Don't tampilkan bahaya dengan warna saja; `cabai` selalu disertai teks.",
-      "Don't pakai bayangan, gradien, atau blur.",
-      "Don't pakai berat font di bawah 500, huruf kapital semua, atau eyebrow label.",
-      "Don't taruh teks putih di atas `kuning`.",
-      "Don't buat lebih dari satu elemen keras per layar.",
-      "Don't beri warna pada struk; struk hitam di atas putih."
+      "Don't tambah warna ketiga, termasuk warna uang kertas.",
+      "Don't pakai bayangan, gradien, blur, atau isian abu dekoratif.",
+      "Don't pakai huruf kapital semua di luar cap.",
+      "Don't buat kartu bersudut besar; sel dan tabel berbagi garis, lembar bersudut 4px.",
+      "Don't tambah animasi selain cap LUNAS."
     ]
   }
 }

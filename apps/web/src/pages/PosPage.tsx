@@ -16,6 +16,8 @@ import type { CartLine } from '../types/cart';
 
 type Props = { me: Me };
 
+const notaDate = new Intl.DateTimeFormat('id-ID', { dateStyle: 'medium', timeZone: 'Asia/Jakarta' });
+
 export function PosPage({ me }: Props) {
   const [products, setProducts] = useState<Product[] | null>(null);
   const [cart, setCart] = useState<CartLine[]>([]);
@@ -89,7 +91,10 @@ export function PosPage({ me }: Props) {
       )}
       <aside className="pos-cart" data-open={cartOpen} aria-labelledby="cart-heading">
         <header>
-          <h2 id="cart-heading">Keranjang</h2>
+          <div>
+            <h2 id="cart-heading">Nota</h2>
+            <p className="muted">{notaDate.format(new Date())}</p>
+          </div>
           <button type="button" className="sheet-close" onClick={() => setCartOpen(false)}>
             Tutup
           </button>

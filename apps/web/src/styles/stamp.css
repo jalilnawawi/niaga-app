@@ -1,0 +1,44 @@
+/* Rubber stamps: the only all-caps text, because a stamp is set that way. Status always reads as a word. */
+.stamp {
+  display: inline-block;
+  padding: 2px 10px;
+  border: 3px double currentColor;
+  border-radius: var(--radius);
+  color: var(--karbon);
+  font-stretch: 75%;
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  transform: rotate(-4deg);
+  white-space: nowrap;
+}
+
+.stamp.void {
+  color: var(--cap);
+}
+
+/* The big one on a fresh receipt. */
+.receipt .stamp {
+  justify-self: center;
+  margin: 4px 0;
+  font-size: 20px;
+  transform: rotate(-7deg);
+}
+
+/* Signature moment: LUNAS lands once on the receipt that was just paid. */
+.pos-cart .receipt .stamp {
+  animation: stamp-land 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes stamp-land {
+  from {
+    opacity: 0;
+    transform: rotate(-12deg) scale(1.6);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-7deg) scale(1);
+  }
+}

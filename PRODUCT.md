@@ -45,7 +45,7 @@ Simpler, cheaper, and hardware-free compared with Moka, Majoo, Pawoon, and Qasir
 ## Brand Commitments
 
 - Name: Niaga.
-- The visual system in `.superdesign/design-system.md` (gerobak stand + rupiah banknote quick-cash buttons, Plus Jakarta Sans) was chosen in phase 6a and is implemented in `apps/web`.
+- The visual system is recorded in `DESIGN.md`. Branch `redesign-1` replaces the phase 6a system (gerobak stand, banknote quick-cash, Plus Jakarta Sans, planned in `.superdesign/design-system.md`) with Buku Nota; it is not decided until that branch is merged.
 
 ## Evidence on Hand
 

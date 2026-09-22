@@ -1,23 +1,21 @@
-/* /jual payment step: total board, method tabs, quick-cash, change, pay button. */
-/* Wraps so a 7-digit total at 44px never overflows the 360px cart column. */
+/* /jual payment step: nota total, method, quick-cash, change, pay button. */
 .total-board {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: baseline;
-  column-gap: 12px;
+  padding-top: 14px;
+  border-bottom: 0;
 }
 
 .total-board strong {
-  font-size: 44px;
-  line-height: 1.1;
+  font-size: 48px;
+  line-height: 1;
 }
 
-/* Tunai / QRIS as two big segments. The radio stays in the tab order. */
+/* Tunai / QRIS: two joined cells of one printed box. The radio stays in the tab order. */
 .segmented {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  border: 1.5px solid var(--tinta);
+  border-radius: var(--radius);
+  overflow: hidden;
 }
 
 .segmented label {
@@ -25,21 +23,22 @@
   align-items: center;
   justify-content: center;
   min-height: var(--touch);
-  border: 2px solid var(--tinta);
-  border-radius: var(--radius);
   font-size: 16px;
   cursor: pointer;
 }
 
+.segmented label + label {
+  border-left: 1.5px solid var(--tinta);
+}
+
 .segmented label:has(:checked) {
-  border-color: var(--toska);
-  background: var(--toska);
-  color: var(--putih);
+  background: var(--karbon);
+  color: var(--kertas);
 }
 
 .segmented label:has(:focus-visible) {
   outline: 3px solid var(--tinta);
-  outline-offset: 2px;
+  outline-offset: -5px;
 }
 
 .segmented input {
@@ -47,7 +46,7 @@
   opacity: 0;
 }
 
-/* Quick-cash: the only place banknote colors appear. White text passes AA on all four. */
+/* Quick-cash: denominations printed as big numerals; "Uang pas" is the dashed fill-in cell. */
 .quick-cash {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -55,38 +54,41 @@
 }
 
 .quick-cash button {
-  min-height: 64px;
-  border: 0;
-  color: var(--putih);
-  font-size: 18px;
+  min-height: 56px;
+  font-stretch: 75%;
+  font-weight: 800;
+  font-size: 24px;
   font-variant-numeric: tabular-nums;
 }
 
-.quick-cash .rp100 { background: #c2185b; }
-.quick-cash .rp50 { background: #1f5fae; }
-.quick-cash .rp20 { background: #23784a; }
-.quick-cash .rp10 { background: #7b3fa0; }
-
 .quick-cash .exact {
   grid-column: 1 / -1;
-  border: 2px solid var(--tinta);
-  background: var(--abu);
-  color: var(--tinta);
+  border: 1.5px dashed var(--karbon);
+  color: var(--karbon);
+  font-stretch: 87.5%;
+  font-size: 20px;
 }
 
+/* Sticky at the sheet's foot, on a strip of paper so scrolled lines never show through. */
 .pay {
   position: sticky;
   bottom: 0;
+  box-shadow: 0 0 0 8px var(--kertas);
 }
 
 .change {
-  font-size: 20px;
+  color: var(--karbon);
+  font-stretch: 75%;
   font-weight: 800;
+  font-size: 28px;
+  font-variant-numeric: tabular-nums;
 }
 
+/* Shortage reads as a red stamp, with the amount in words. */
 .change.short {
-  padding: 8px 12px;
+  justify-self: start;
+  padding: 4px 12px;
+  border: 3px double var(--cap);
   border-radius: var(--radius);
-  background: var(--cabai);
-  color: var(--putih);
+  color: var(--cap);
 }

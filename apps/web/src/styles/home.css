@@ -1,0 +1,66 @@
+/* Beranda index: a ruled grid of entries, like the printed contents of a form book. */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--rule-tua);
+  border-left: var(--rule-tua);
+}
+
+.tiles a {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  min-height: 84px;
+  height: 100%;
+  padding: 16px 20px;
+  border-right: var(--rule-tua);
+  border-bottom: var(--rule-tua);
+  color: var(--tinta);
+  text-decoration: none;
+  font-stretch: 75%;
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 1.1;
+  transition: background-color 120ms ease-out;
+}
+
+.tiles a:hover {
+  background: var(--karbon-cuci);
+}
+
+.tiles a span {
+  font-stretch: 100%;
+  font-size: 14px;
+  font-weight: 450;
+  color: var(--pudar);
+}
+
+/* Beranda status: the day's nota total line with the next action beside it. */
+.today {
+  align-items: center;
+  gap: 12px 24px;
+  padding: 16px 0;
+}
+
+.today-sales {
+  font-stretch: 100%;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--tinta);
+}
+
+.account {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+}
+
+@media (min-width: 900px) {
+  .tiles a {
+    min-height: 112px;
+    padding: 18px 20px;
+  }
+}
