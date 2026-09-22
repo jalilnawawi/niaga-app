@@ -1,43 +1,56 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
-import type { Me } from '@niaga/shared';
+import type { Me, Order, Shift } from '@niaga/shared';
+import { errorMessage } from '../api/error-message';
+import { listTodayOrders } from '../api/order.api';
+import { getCurrentShift } from '../api/shift.api';
+import { navLinks } from '../components/shell/nav-links';
+import { TodayBoard } from '../components/shell/TodayBoard';
 
 type Props = { me: Me; onLogout: () => void };
 
-const tiles = [
-  { to: '/jual', label: 'Jual', hint: 'Catat penjualan dan cetak struk', owner: false },
-  { to: '/shift', label: 'Shift', hint: 'Buka dan tutup shift, hitung kas', owner: false },
-  { to: '/riwayat', label: 'Riwayat hari ini', hint: 'Transaksi dan struk hari ini', owner: false },
-  { to: '/laporan', label: 'Laporan', hint: 'Penjualan per hari, produk, kasir', owner: true },
-  { to: '/katalog', label: 'Katalog', hint: 'Produk, harga, dan kategori', owner: true },
-  { to: '/kasir', label: 'Kelola kasir', hint: 'Tambah kasir dan reset password', owner: true },
-];
+const longDate = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Jakarta', dateStyle: 'full' });
 
 export function HomePage({ me, onLogout }: Props) {
+  const [today, setToday] = useState<{ shift: Shift | null; orders: Order[] } | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    Promise.all([getCurrentShift(), listTodayOrders()])
+      .then(([shift, orders]) => setToday({ shift, orders }))
+      .catch((e: unknown) => setError(errorMessage(e)));
+  }, []);
+
   return (
     <main className="page">
       <header className="page-head">
         <h1>{me.tenant.name}</h1>
-        <p className="muted">
-          {me.name} · {me.role === 'owner' ? 'Owner' : 'Kasir'}
-        </p>
+        <p className="muted">{longDate.format(new Date())}</p>
       </header>
+      {error && <p role="alert">{error}</p>}
+      {!today && !error && <p>Memuat status hari ini…</p>}
+      {today && <TodayBoard shift={today.shift} orders={today.orders} />}
       <ul className="tiles">
-        {tiles
+        {navLinks
           .filter((t) => !t.owner || me.role === 'owner')
           .map((t) => (
             <li key={t.to}>
-              <Link to={t.to} className={t.to === '/jual' ? 'primary' : undefined}>
+              <Link to={t.to}>
                 {t.label}
                 <span>{t.hint}</span>
               </Link>
             </li>
           ))}
       </ul>
-      <p>
+      {/* The rail carries user and Keluar on tablet; the phone bottom bar has no room for them. */}
+      <div className="phone-only account">
+        <p className="muted">
+          Masuk sebagai {me.name} ({me.role === 'owner' ? 'Owner' : 'Kasir'})
+        </p>
         <button type="button" onClick={onLogout}>
-          Logout
+          Keluar
         </button>
-      </p>
+      </div>
     </main>
   );
 }

@@ -151,7 +151,7 @@ Cat gerobak di atas putih: satu warna aksi, satu warna papan, satu warna bahaya,
 - **Toska Cat Gerobak** (`toska`): aksi utama, nav aktif, tautan, segmen terpilih, dan badge jumlah di tile produk. Teks putih di atasnya 5.2:1.
 
 ### Secondary
-- **Kuning Papan Harga** (`kuning`): papan total dan bar keranjang di HP. Selalu dengan teks `tinta`, tidak pernah teks putih.
+- **Kuning Papan Harga** (`kuning`): papan total, bar keranjang di HP, dan papan status Beranda. Selalu dengan teks `tinta`, tidak pernah teks putih.
 
 ### Tertiary
 - **Merah Cabai** (`cabai`): bahaya saja, yaitu void, hapus, error, dan kurang bayar. Teks putih di atasnya 5.6:1.
@@ -172,7 +172,7 @@ Cat gerobak di atas putih: satu warna aksi, satu warna papan, satu warna bahaya,
 
 **The Cabai Bersuara Rule.** Status bahaya selalu punya teks ("Kurang Rp5.000", "VOID"), tidak pernah warna saja, karena `cabai` dan `rp100` sama-sama merah.
 
-**The Papan Kuning Rule.** Kuning adalah papan harga, bukan dekorasi. Pakai hanya untuk total dan bar keranjang.
+**The Papan Kuning Rule.** Kuning adalah papan harga, bukan dekorasi. Pakai hanya untuk total, bar keranjang, dan papan status Beranda.
 
 ## Typography
 
@@ -242,14 +242,15 @@ Tegas seperti papan harga, satu label per tombol.
 
 ### Navigation
 - **HP:** bar bawah, item dibagi rata, 14px. Item aktif: blok toska penuh dengan teks putih.
-- **Tablet:** rail kiri, item 48px bersudut 12px, aktif toska. Wordmark toska 20px di atas, nama user 14px di bawah.
-- Owner melihat Kasir, Katalog, Laporan; kasir tidak.
+- **Tablet:** rail kiri, item 48px bersudut 12px, aktif toska. Wordmark toska 20px di atas. Halaman owner dikelompokkan di bawah label redup "Pemilik" 14px. Nama user dan tombol link "Keluar" di bawah.
+- Rail dan tile Beranda memakai satu daftar (`nav-links.ts`): urutan dan label selalu sama. Owner melihat Katalog, Kelola kasir, Laporan; kasir tidak.
+- **HP:** owner pages dan "Keluar" dijangkau dari Beranda.
 
 ### Tables
 - Rata, sudut 0. Header 14px dengan garis bawah 2px tinta. Belang abu di baris genap. Baris nonaktif redup.
 
 ### Papan Harga (signature)
-Papan kuning dengan teks tinta 800. Dipakai untuk papan total di keranjang (angka 44px, turun baris kalau tidak muat) dan bar keranjang di HP (64px, menempel di atas nav, berisi jumlah item dan total).
+Papan kuning dengan teks tinta 800. Dipakai untuk papan status Beranda (shift dan penjualan hari ini, dengan tombol aksi berikutnya), papan total di keranjang (angka 44px, turun baris kalau tidak muat) dan bar keranjang di HP (64px, menempel di atas nav, berisi jumlah item dan total).
 
 ### Tile Produk
 Tombol putih dengan border abu, tinggi minimal 96px, padding 12px. Nama produk 20px di atas, harga 16px tabular di bawah, dan badge pil toska berisi jumlah di keranjang.

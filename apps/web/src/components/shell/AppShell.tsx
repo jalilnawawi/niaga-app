@@ -1,40 +1,48 @@
 import { NavLink, Outlet } from 'react-router';
 import type { Me } from '@niaga/shared';
+import { navLinks } from './nav-links';
 
-type Props = { me: Me };
+type Props = { me: Me; onLogout: () => void };
 
-// Phone shows the first four links in a bottom bar; owner pages are reached from Beranda there.
-const links = [
-  { to: '/', label: 'Beranda', owner: false },
-  { to: '/jual', label: 'Jual', owner: false },
-  { to: '/riwayat', label: 'Riwayat', owner: false },
-  { to: '/shift', label: 'Shift', owner: false },
-  { to: '/katalog', label: 'Katalog', owner: true },
-  { to: '/kasir', label: 'Kasir', owner: true },
-  { to: '/laporan', label: 'Laporan', owner: true },
-];
+const item = (to: string, label: string) => (
+  <li key={to}>
+    <NavLink to={to} end>
+      {label}
+    </NavLink>
+  </li>
+);
 
-export function AppShell({ me }: Props) {
+// Phone: bottom bar with Beranda plus the cashier links; owner pages and Keluar are reached from Beranda.
+export function AppShell({ me, onLogout }: Props) {
+  const owner = me.role === 'owner';
   return (
     <div className="shell">
       <nav className="nav" aria-label="Navigasi utama">
         <p className="nav-brand">Niaga</p>
         <ul>
-          {links
-            .filter((l) => !l.owner || me.role === 'owner')
-            .map((l) => (
-              <li key={l.to} className={l.owner ? 'rail-only' : undefined}>
-                <NavLink to={l.to} end>
-                  {l.label}
-                </NavLink>
-              </li>
-            ))}
+          {item('/', 'Beranda')}
+          {navLinks.filter((l) => !l.owner).map((l) => item(l.to, l.label))}
         </ul>
-        <p className="nav-user">
-          {me.name}
-          <br />
-          <span className="muted">{me.role === 'owner' ? 'Owner' : 'Kasir'}</span>
-        </p>
+        {owner && (
+          <>
+            <p className="nav-group" id="nav-pemilik">
+              Pemilik
+            </p>
+            <ul className="rail-only" aria-labelledby="nav-pemilik">
+              {navLinks.filter((l) => l.owner).map((l) => item(l.to, l.label))}
+            </ul>
+          </>
+        )}
+        <div className="nav-user">
+          <p>
+            {me.name}
+            <br />
+            <span className="muted">{owner ? 'Owner' : 'Kasir'}</span>
+          </p>
+          <button type="button" className="link" onClick={onLogout}>
+            Keluar
+          </button>
+        </div>
       </nav>
       <Outlet />
     </div>

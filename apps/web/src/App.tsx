@@ -29,11 +29,12 @@ export function App() {
       </main>
     );
   if (!me) return <LoginPage onLoggedIn={loadMe} />;
+  const onLogout = () => logout().then(() => setMe(null));
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<AppShell me={me} />}>
-        <Route path="/" element={<HomePage me={me} onLogout={() => logout().then(() => setMe(null))} />} />
+        <Route element={<AppShell me={me} onLogout={onLogout} />}>
+        <Route path="/" element={<HomePage me={me} onLogout={onLogout} />} />
         <Route path="/jual" element={<PosPage me={me} />} />
         <Route path="/riwayat" element={<OrdersPage me={me} />} />
         <Route path="/shift" element={<ShiftPage me={me} />} />

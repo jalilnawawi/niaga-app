@@ -14,6 +14,7 @@
 }
 
 .nav-brand,
+.nav-group,
 .nav-user,
 .nav .rail-only {
   display: none;
@@ -62,9 +63,29 @@
   }
 
   .nav-brand,
-  .nav-user,
-  .nav .rail-only {
+  .nav-group,
+  .nav-user {
     display: block;
+  }
+
+  .nav ul.rail-only {
+    display: flex;
+  }
+
+  .nav-group {
+    margin-top: 8px;
+    padding: 0 8px;
+    font-size: 14px;
+    color: color-mix(in srgb, var(--tinta) 70%, var(--putih));
+  }
+
+  /* Owner pages sit right under their group label. */
+  .nav-group + ul {
+    margin-top: -12px;
+  }
+
+  .shell .phone-only {
+    display: none;
   }
 
   .nav-brand {
@@ -88,6 +109,11 @@
     margin-top: auto;
     font-size: 14px;
     overflow-wrap: anywhere;
+  }
+
+  .nav-user button {
+    min-height: var(--touch);
+    padding: 0;
   }
 }
 
@@ -122,6 +148,26 @@
   border-color: var(--toska);
   background: var(--toska);
   color: var(--putih);
+}
+
+/* Beranda status board: the one kuning element on the page, next action on its right. */
+.today {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px 24px;
+}
+
+.today-sales {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.account {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
 }
 
 /* Login and signup: one centred card on abu. */
