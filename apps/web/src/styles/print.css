@@ -50,24 +50,30 @@
 
 /* window.print() prints only the receipt. */
 @media print {
+  /* ponytail: no @page size. Chrome has no auto page height, so the paper
+     comes from the printer driver (58 mm roll). Set it there, not here. */
   @page {
-    size: 58mm auto;
     margin: 0;
   }
 
-  body * {
-    visibility: hidden;
+  body {
+    margin: 0;
+    padding: 0;
   }
 
-  .receipt,
-  .receipt * {
-    visibility: visible;
+  /* display: none, not visibility: hidden. Hidden content still takes height
+     and feeds blank thermal paper after the receipt. Ancestors of the receipt
+     drop their own box (display: contents) so no padding or sheet offset leaks.
+     !important: screen rules such as .pos-cart[data-open] are more specific. */
+  body *:not(.receipt, .receipt *, :has(.receipt)) {
+    display: none !important;
+  }
+
+  body *:has(.receipt) {
+    display: contents !important;
   }
 
   .receipt {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 58mm;
     padding: 2mm;
     border: 0;
