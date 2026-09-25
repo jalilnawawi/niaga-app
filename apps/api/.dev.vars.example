@@ -2,3 +2,6 @@
 DATABASE_URL=postgres://postgres:postgres@db.localtest.me:5432/niaga
 # Or Neon dev database:
 # DATABASE_URL=postgresql://USER:PASSWORD@HOST/niaga_dev_db?sslmode=require
+
+# Overrides the production WEB_ORIGIN in wrangler.toml while running wrangler dev.
+WEB_ORIGIN=http://localhost:5173

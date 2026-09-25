@@ -1,9 +1,17 @@
+account_id = "a156e8390b3e9eca8506bfa8c00a8a53"
 name = "niaga-api"
 main = "src/index.ts"
 compatibility_date = "2026-09-01"
 
+# Same site as the web app, so the session cookie works.
+routes = [{ pattern = "api.niaga.sukudev.net", custom_domain = true }]
+
+# Workers Logs: console output and uncaught errors (onError logs every 500) are kept in the dashboard.
+[observability]
+enabled = true
+
 [vars]
-WEB_ORIGIN = "http://localhost:5173"
+WEB_ORIGIN = "https://niaga.sukudev.net"
 
 # Login/signup attempts per key (IP and email). Counted per Cloudflare location, not globally exact.
 [[ratelimits]]
@@ -13,6 +21,3 @@ simple = { limit = 10, period = 60 }
 
 # Secrets (never commit): set with `wrangler secret put DATABASE_URL`.
 # Local dev reads them from .dev.vars.
-
-# Enable once the domain is on Cloudflare, so web and api share one site for cookies.
-# routes = [{ pattern = "api.niaga.id", custom_domain = true }]

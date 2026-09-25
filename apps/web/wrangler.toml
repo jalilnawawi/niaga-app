@@ -1,8 +1,8 @@
+account_id = "a156e8390b3e9eca8506bfa8c00a8a53"
 name = "niaga-web"
 compatibility_date = "2026-09-01"
+routes = [{ pattern = "niaga.sukudev.net", custom_domain = true }]
 
 [assets]
 directory = "./dist"
 not_found_handling = "single-page-application"
-
-# routes = [{ pattern = "app.niaga.id", custom_domain = true }]
