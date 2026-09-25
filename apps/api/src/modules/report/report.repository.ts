@@ -32,7 +32,7 @@ export const salesByProduct = (db: Db, tenantId: string, from: string, to: strin
     .select({ productId: orderItems.productId, name: products.name, qty: num(sql`sum(${orderItems.qty})`), total })
     .from(orderItems)
     .innerJoin(orders, and(eq(orders.id, orderItems.orderId), eq(orders.tenantId, orderItems.tenantId)))
-    .innerJoin(products, eq(products.id, orderItems.productId))
+    .innerJoin(products, and(eq(products.id, orderItems.productId), eq(products.tenantId, orderItems.tenantId)))
     .where(and(eq(orderItems.tenantId, tenantId), paidBetween(tenantId, from, to)))
     .groupBy(orderItems.productId, products.name)
     .orderBy(desc(total));

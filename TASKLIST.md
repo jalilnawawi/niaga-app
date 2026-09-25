@@ -104,9 +104,9 @@ Web belum punya CSS sama sekali; satu-satunya CSS adalah aturan print struk di `
 - [ ] Database Neon production + branch untuk staging
 - [ ] GitHub secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `DATABASE_URL`; variable `VITE_API_URL`
 - [ ] `wrangler secret put DATABASE_URL` untuk Worker production
-- [ ] Observability Worker aktif (logs) dan error 500 tercatat
+- [x] Observability Worker aktif (logs) dan error 500 tercatat: `[observability]` di `apps/api/wrangler.toml`, `onError` sudah `console.error`. Cek di dashboard setelah deploy
 - [ ] Cek backup / point-in-time restore Neon
-- [ ] Security review sebelum rilis: filter `tenantId`, cookie, CSRF, rate limit
+- [x] Security review sebelum rilis: filter `tenantId`, cookie, CSRF, rate limit. Perbaikan: join `products` di laporan per produk ikut filter `tenantId`; web kirim header `X-Frame-Options`, `nosniff`, `Referrer-Policy` lewat `public/_headers`
 
 ## 8. Deploy
 
