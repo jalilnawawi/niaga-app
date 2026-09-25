@@ -102,7 +102,7 @@ Web belum punya CSS sama sekali; satu-satunya CSS adalah aturan print struk di `
 - [ ] Domain di Cloudflare; aktifkan `routes` di kedua `wrangler.toml` (web dan api satu site agar cookie jalan)
 - [ ] `WEB_ORIGIN` production di `apps/api/wrangler.toml`
 - [ ] Database Neon production + branch untuk staging
-- [ ] GitHub secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `DATABASE_URL`; variable `VITE_API_URL`
+- [ ] GitHub secrets: `CLOUDFLARE_API_TOKEN`, `DATABASE_URL`; variable `VITE_API_URL` (account id sudah di `wrangler.toml`)
 - [ ] `wrangler secret put DATABASE_URL` untuk Worker production
 - [x] Observability Worker aktif (logs) dan error 500 tercatat: `[observability]` di `apps/api/wrangler.toml`, `onError` sudah `console.error`. Cek di dashboard setelah deploy
 - [ ] Cek backup / point-in-time restore Neon
